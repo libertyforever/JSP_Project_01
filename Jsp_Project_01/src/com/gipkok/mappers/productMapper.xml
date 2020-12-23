@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.gipkok.mappers.productMapper">
+	<sql id="base">from tbl_product where pno=#{pno}</sql>
+	<insert id="reg" parameterType="com.gipkok.domain.ProductVO">
+		insert into tbl_product (category, pname, content, price, imgfile, thumb)
+		values (#{category}, #{pname}, #{content}, #{price}, #{imgfile}, #{thumb})
+	</insert>
+	<select id="list" resultType="pvo" parameterType="paging">  <!-- list는 하나의 포장지고 그 안에 있는 productVO가 들어가야함 -->
+		select pno, category, pname, price, moddate, thumb from tbl_product
+		limit #{startNo}, #{pageSize}
+	</select>
+	<select id="info" parameterType="java.lang.Integer" resultType="pvo">
+		select * <include refid="base"></include>
+	</select>
+	<select id="cnt" resultType="java.lang.Integer">
+		select count(pno) from tbl_product	
+	</select>
+	<update id="mod" parameterType="pvo"> <!-- resultType은 알아서 int로 전환해줌 -->
+		update tbl_product set category=#{category}, pname=#{pname}, content=#{content},
+		price=#{price}, moddate=now(), imgfile=#{imgfile}, thumb=#{thumb} where pno=${pno}
+	</update>
+	<delete id="rm" parameterType="java.lang.Integer"> <!-- 리눅스명령어가 rm -->
+		delete <include refid="base"></include>
+	</delete>
+	<select id="login" parameterType="com.gipkok.domain.ProductVO" resultType="com.gipkok.domain.ProductVO">
+	</select>
+	<select id="pnoCount" parameterType="java.lang.String" resultType="java.lang.Integer">
+	</select>
+	
+</mapper>
