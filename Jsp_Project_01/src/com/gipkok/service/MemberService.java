@@ -2,7 +2,7 @@ package com.gipkok.service;
 
 import java.util.ArrayList;
 
-import com.king.domain.MemberVO;
+import com.gipkok.domain.MemberVO;
 
 public interface MemberService {
 	public int join(MemberVO mvo);

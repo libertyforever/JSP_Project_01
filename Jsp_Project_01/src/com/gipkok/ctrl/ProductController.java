@@ -1,11 +1,12 @@
 package com.gipkok.ctrl;
 
+import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Enumeration;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,20 +14,20 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.gipkok.domain.MemberVO;
 import com.gipkok.domain.Paging;
 import com.gipkok.domain.ProductVO;
 import com.gipkok.orm.FtpManager;
-import com.gipkok.service.MemberService;
 import com.gipkok.service.ProductService;
 import com.gipkok.service.ProductServiceImp;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+import com.sun.jimi.core.Jimi;
+import com.sun.jimi.core.JimiException;
+import com.sun.jimi.core.JimiUtils;
 
 import net.coobird.thumbnailator.Thumbnails;
 
@@ -44,6 +45,7 @@ public class ProductController extends HttpServlet {
 
 	
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	logger.info(">>> Product Service start");
 	request.setCharacterEncoding("utf-8");
 	response.setCharacterEncoding("utf-8");
 	response.setContentType("text/html;charset=utf-8");
@@ -52,7 +54,7 @@ public class ProductController extends HttpServlet {
 	String destPage = "";
 	
 	switch (sv) {
-	case "reg": 
+	case "upl": 
 		String realPath=request.getServletContext().getRealPath("/");
 		String savePath=realPath+"upload";
 		int maxSize=1024*1024; //1메가바이트
@@ -65,52 +67,49 @@ public class ProductController extends HttpServlet {
 		pvo.setContent(multi.getParameter("content"));
 		pvo.setPrice(Double.parseDouble(multi.getParameter("price")));
 		
-		if(multi.getFile("imgfile") != null) {
-			String uploadPath = multi.getFile("imgfile").getAbsolutePath();
-			logger.info(">>>uploadpath : "+uploadPath);
-			LocalDateTime now = LocalDateTime.now();
-			DateTimeFormatter form = DateTimeFormatter.ofPattern("yyMMddHHmmss");
-			String dateForm = now.format(form);
-			
-			String fileName = uploadPath.substring(uploadPath.lastIndexOf("\\")+1);
-			String uploadFileName = dateForm +"_"+ fileName;			    
-		    logger.info(">>> uploadFileName : " + uploadFileName);			    
-			
-		    FtpManager fm = new FtpManager();
-		    try {
-				fm.fileUpload(uploadPath, "/html/jspimg", uploadFileName, request);
-				pvo.setImgfile("http://hyeong5273pg.dothome.co.kr/jspimg/"+uploadFileName);
-			} catch (Exception e) {
-				logger.info(">>> 파일 업로드 실패!");
-				e.printStackTrace();
-			}
-		    String fileExt = fileName.substring(fileName.lastIndexOf(".")+1);
-		    switch (fileExt) {
-			case "jpg": case "JPG": case "JPEG": case "jpeg": case "png": case "PNG":
-				Thumbnails.of(new File(uploadPath))
-		        .size(270, 270)
-		        .toFile(new File(savePath+"\\s_"+fileName));
-				
-				try {
-					fm.fileUpload(savePath+"\\s_"+fileName,
-							"/html/jspimg", "s_"+ uploadFileName, request);
-					pvo.setThumb("http://hyeong5273pg.dothome.co.kr/jspimg/"+"s_"+ uploadFileName);
-				} catch (Exception e) {
-					logger.info(">>> 썸네일 업로드 실패!");
-					e.printStackTrace();
+		try {
+		Enumeration files = multi.getFileNames();
+		
+		if(files.hasMoreElements()) {
+			String paramName = (String)files.nextElement();
+			logger.info(">>> paramName:"+paramName);
+			String fileName = multi.getFilesystemName(paramName);
+			logger.info(">>> fileName:"+fileName);
+			if(fileName != null && fileName.trim().length() !=0) {
+				String fileExt = fileName.substring(fileName.lastIndexOf(".")+1);
+				boolean isImage = (fileExt.equalsIgnoreCase("JPG") ||
+						fileExt.equalsIgnoreCase("JPEG") ||
+						fileExt.equalsIgnoreCase("PNG"));
+				if(isImage) {
+					String thumbSavePath = realPath + "\\s_" + fileName;
+					int width = 250;
+					int height = 250;
+					Image thumbNail = 
+							JimiUtils.getThumbnail(realPath+"/"+fileName,
+									width, height, Jimi.IN_MEMORY);
+					try {
+						Jimi.putImage(thumbNail, thumbSavePath);
+						pvo.setThumb(thumbSavePath.substring(realPath.length()+1));
+					} catch (JimiException e) {
+						logger.info(">>> 썸네일 생성 실패");
+						e.printStackTrace();
+					}					
 				}
-				break;
-
-			default:
-				break;
-			}		
+				pvo.setImgfile(fileName);
+			}else {
+				pvo.setImgfile("Unattached");
+			}						
+		}
+		}catch (Exception e) {
+			logger.info(">>> file upload fail");
 		}
 		
-		int isReg = psv.regist(pvo);
-		logger.info(">>> 상품등록 : " + (isReg> 0 ? "성공" : "실패"));
-		destPage = "product?sv=list";
+		int isUpl = psv.upload(pvo);
+		logger.info(">>> 상품등록 : " + (isUpl> 0 ? "성공" : "실패"));
+		destPage = "index.jsp";
 		
 		break;
+		
 	case "list":
 		//PrintWriter out = response.getWriter();
 		//out.print("<script>alert('등록성공?');</script>");

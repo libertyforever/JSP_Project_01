@@ -14,7 +14,8 @@ public class DBBuilder {
 	static {
 		try {
 			factory = new SqlSessionFactoryBuilder().build(Resources
-					.getResourceAsReader("com/king/orm/MybatisConfig.xml"));
+					.getResourceAsReader("com/gipkok/orm/MybatisConfig.xml"));
+			logger.info("Session >> Success");
 		} catch (Exception e) {
 			logger.info("Session >> fail");
 			e.printStackTrace();

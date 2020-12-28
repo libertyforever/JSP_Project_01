@@ -1,20 +1,19 @@
 package com.gipkok.persistence;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.king.domain.Paging;
-import com.king.domain.ProductVO;
-import com.king.orm.DBBuilder;
+import com.gipkok.domain.Paging;
+import com.gipkok.domain.ProductVO;
+import com.gipkok.orm.DBBuilder;
 
 public class ProductDAOImp implements ProductDAO{
 	private static Logger logger = LoggerFactory.getLogger(ProductDAOImp.class);
 	private SqlSession sql;
-	private static String namespace = "com.king.mappers.productMapper"; //네임스페이스 주소값이 아닌이름. 
+	private static String namespace = "com.gipkok.mappers.productMapper"; //네임스페이스 주소값이 아닌이름. 
 	
 	public ProductDAOImp() {
 		new DBBuilder();

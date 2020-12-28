@@ -5,9 +5,9 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.king.domain.CommentVO;
-import com.king.persistence.CommentDAO;
-import com.king.persistence.CommentDAOimp;
+import com.gipkok.domain.CommentVO;
+import com.gipkok.persistence.CommentDAO;
+import com.gipkok.persistence.CommentDAOimp;
 
 public class CommentServiceImp implements CommentService {
 

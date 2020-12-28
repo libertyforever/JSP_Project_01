@@ -2,11 +2,11 @@ package com.gipkok.service;
 
 import java.util.List;
 
-import com.king.domain.Paging;
-import com.king.domain.ProductVO;
+import com.gipkok.domain.Paging;
+import com.gipkok.domain.ProductVO;
 
 public interface ProductService {
-	public int regist(ProductVO pvo);
+	public int upload(ProductVO pvo);
 	public ProductVO login(ProductVO pvo);
 	public List<ProductVO> getList(Paging paging);
 	public ProductVO getInfo(Integer pno);

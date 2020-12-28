@@ -5,10 +5,10 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.king.domain.Paging;
-import com.king.domain.ProductVO;
-import com.king.persistence.ProductDAO;
-import com.king.persistence.ProductDAOImp;
+import com.gipkok.domain.Paging;
+import com.gipkok.domain.ProductVO;
+import com.gipkok.persistence.ProductDAO;
+import com.gipkok.persistence.ProductDAOImp;
 
 public class ProductServiceImp implements ProductService{
 	private static Logger logger = LoggerFactory.getLogger(ProductServiceImp.class);
@@ -18,7 +18,7 @@ public class ProductServiceImp implements ProductService{
 		pdao = new ProductDAOImp();
 	}	
 	@Override
-	public int regist(ProductVO pvo) {		
+	public int upload(ProductVO pvo) {		
 		return pdao.insert(pvo);
 	}
 

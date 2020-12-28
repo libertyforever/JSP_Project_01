@@ -2,7 +2,7 @@ package com.gipkok.persistence;
 
 import java.util.ArrayList;
 
-import com.king.domain.MemberVO;
+import com.gipkok.domain.MemberVO;
 
 public interface MemberDAO {
 	public int insert(MemberVO mvo); // 가입

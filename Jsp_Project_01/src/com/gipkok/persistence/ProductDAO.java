@@ -2,8 +2,8 @@ package com.gipkok.persistence;
 
 import java.util.List;
 
-import com.king.domain.Paging;
-import com.king.domain.ProductVO;
+import com.gipkok.domain.Paging;
+import com.gipkok.domain.ProductVO;
 
 public interface ProductDAO {
 	public int insert(ProductVO pvo); // 가입

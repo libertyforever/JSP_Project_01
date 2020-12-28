@@ -5,9 +5,9 @@ import java.util.ArrayList;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.king.domain.MemberVO;
-import com.king.persistence.MemberDAO;
-import com.king.persistence.MemberDAOImp;
+import com.gipkok.domain.MemberVO;
+import com.gipkok.persistence.MemberDAO;
+import com.gipkok.persistence.MemberDAOImp;
 
 public class MemberServiceImp implements MemberService{
 	private static Logger logger = LoggerFactory.getLogger(MemberServiceImp.class);

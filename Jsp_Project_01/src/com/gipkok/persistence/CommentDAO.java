@@ -2,7 +2,7 @@ package com.gipkok.persistence;
 
 import java.util.List;
 
-import com.king.domain.CommentVO;
+import com.gipkok.domain.CommentVO;
 
 public interface CommentDAO {
 	public int insert(CommentVO cvo); // 코멘트 작성

@@ -6,8 +6,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.king.domain.CommentVO;
-import com.king.orm.DBBuilder;
+import com.gipkok.domain.CommentVO;
+import com.gipkok.orm.DBBuilder;
 
 public class CommentDAOimp implements CommentDAO {
 

@@ -15,10 +15,10 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.king.domain.MemberVO;
-import com.king.domain.Paging;
-import com.king.service.MemberService;
-import com.king.service.MemberServiceImp;
+import com.gipkok.domain.MemberVO;
+import com.gipkok.domain.Paging;
+import com.gipkok.service.MemberService;
+import com.gipkok.service.MemberServiceImp;
 
 
 @WebServlet("/member")

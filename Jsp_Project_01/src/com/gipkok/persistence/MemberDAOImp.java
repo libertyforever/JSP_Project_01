@@ -7,8 +7,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.king.domain.MemberVO;
-import com.king.orm.DBBuilder;
+import com.gipkok.domain.MemberVO;
+import com.gipkok.orm.DBBuilder;
 
 public class MemberDAOImp implements MemberDAO{
 	private static Logger logger = LoggerFactory.getLogger(MemberDAOImp.class);

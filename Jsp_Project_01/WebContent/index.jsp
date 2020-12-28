@@ -22,7 +22,7 @@
  	<c:set var="jsp" value="member/modify.jsp"></c:set>
  </c:when>
     <c:when test="${view eq 'reg' }">
- 	<c:set var="jsp" value="product/regist.jsp"></c:set>
+ 	<c:set var="jsp" value="product/upload.jsp"></c:set>
  </c:when>
      <c:when test="${view eq 'pli' }">
  	<c:set var="jsp" value="product/list.jsp"></c:set>
