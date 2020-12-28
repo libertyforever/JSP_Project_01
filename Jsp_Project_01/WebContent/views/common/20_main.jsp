@@ -30,7 +30,6 @@
                      <div class="panel panel-default">
                         <div class="panel-heading">
                            <h4 class="panel-title">
-                              <%-- 리스트 목록 링크 사용 --%>
                               <a data-toggle="collapse" data-parent="#accordian" href="#mens">
                                  <span class="badge pull-right"></span>
                                  조립블럭
