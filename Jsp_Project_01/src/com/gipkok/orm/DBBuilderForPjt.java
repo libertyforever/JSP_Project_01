@@ -1,28 +1,30 @@
 package com.gipkok.orm;
 
+import java.io.IOException;
+
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class DBBuilder {
-	private static Logger logger = LoggerFactory.getLogger(DBBuilder.class);
+public class DBBuilderForPjt {
+	private static Logger logger = LoggerFactory.getLogger(DBBuilderForPjt.class);
 	
-	private static SqlSessionFactory factory;
+	private static SqlSessionFactory factory_pjt;
 	
 	static {
 		try {
-			factory = new SqlSessionFactoryBuilder().build(Resources
+			factory_pjt = new SqlSessionFactoryBuilder().build(Resources
 					.getResourceAsReader("com/gipkok/orm/MybatisConfig.xml"));
 			logger.info("Session >> Success");
-		} catch (Exception e) {
+		} catch (IOException e) {
 			logger.info("Session >> fail");
 			e.printStackTrace();
 		}
 	}
 	
 	public static SqlSessionFactory getFactory() {
-		return factory;
+		return factory_pjt;
 	}
 }

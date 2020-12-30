@@ -1,23 +1,26 @@
 package com.gipkok.persistence;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.gipkok.domain.Paging;
 import com.gipkok.domain.ProductVO;
-import com.gipkok.orm.DBBuilder;
+import com.gipkok.orm.DBBuilderForPjt;
 
 public class ProductDAOImp implements ProductDAO{
 	private static Logger logger = LoggerFactory.getLogger(ProductDAOImp.class);
 	private SqlSession sql;
 	private static String namespace = "com.gipkok.mappers.productMapper"; //네임스페이스 주소값이 아닌이름. 
-	
+	private SqlSessionFactory sqlsf;
 	public ProductDAOImp() {
-		new DBBuilder();
-		sql = DBBuilder.getFactory().openSession();
+		new DBBuilderForPjt();
+		sqlsf = DBBuilderForPjt.getFactory();		
+		sql = sqlsf.openSession();
 	}
 
 
@@ -70,6 +73,26 @@ public class ProductDAOImp implements ProductDAO{
 	public ProductVO selectOne(ProductVO pvo) {
 		return sql.selectOne(namespace+".login", pvo);
 	}
+
+
+	@Override
+	public List<ProductVO> selectViewCList() {
+		return sql.selectList(namespace+".vcnt");
+	}
+
+
+	@Override
+	public List<ProductVO> selectOrderClist() {
+		return sql.selectList(namespace+".ocnt");
+	}
+
+
+	@Override
+	public List<ProductVO> selectCateList(String pvo) {
+		return sql.selectList(namespace+".cli",pvo);
+	}
+
+
 
 	
 

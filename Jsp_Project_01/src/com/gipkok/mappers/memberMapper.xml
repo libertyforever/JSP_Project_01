@@ -1,34 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<!DOCTYPE mapper
-    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
-<mapper namespace="com.king.mappers.memberMapper">
-	<insert id="join" parameterType="com.king.domain.MemberVO">
-		insert into tbl_member values (#{email},#{nickname},#{pwd},0)
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gipkok.mappers.memberMapper">
+	<insert id="join" parameterType="mvo">
+		insert into member
+		values (#{id},#{pwd},#{nickname},0,0)
 	</insert>
-	<select id="login" parameterType="com.king.domain.MemberVO" resultType="com.king.domain.MemberVO">
-		select email, nickname, grade from tbl_member
-		where email=#{email} and pwd=#{pwd}
+	<select id="login" parameterType="mvo" resultType="mvo">
+		select id, nickname, grade , cpn from member
+		where id=#{id} and pwd=#{pwd}
 	</select>
-	<select id="list" resultType="mvo">  <!-- list는 하나의 포장지고 그 안에 있는 MemberVO가 들어가야함 -->
-		select email, nickname, grade from tbl_member
+	<select id="list" resultType="mvo">
+		select id, nickname, grade,cpn from member
 	</select>
 	<select id="info" parameterType="java.lang.String" resultType="mvo">
-		select email, nickname, pwd from tbl_member where email=#{email} 
+		 select id, nickname, pwd from member where id=#{id}
 	</select>
-	<select id="emailCount" parameterType="java.lang.String" resultType="java.lang.Integer">
-		select count(email) from tbl_member where email=#{email}
-	</select>
-	<update id="edit" parameterType="mvo"> <!-- resultType은 알아서 int로 전환해줌 -->
-		update tbl_member set pwd=#{pwd}, nickname=#{nickname} where email=#{email}
+	<update id="edit" parameterType="mvo">
+		update member set pwd=#{pwd}, nickname=#{nickname}
+		where id=#{id}
 	</update>
-	<delete id="remove" parameterType="java.lang.String">
-		delete from tbl_member where email=#{email}
-	</delete>
-	<select id="cnt" resultType="java.lang.Integer">
-		select count(email) from tbl_member	
-	</select>
-	
+	<delete id="rm" parameterType="java.lang.String">
+	   delete from member where id=#{id}
+	</delete>	
 </mapper>

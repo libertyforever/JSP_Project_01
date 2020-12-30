@@ -7,17 +7,17 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.gipkok.domain.CommentVO;
-import com.gipkok.orm.DBBuilder;
+import com.gipkok.orm.DBBuilderForPjt;
 
 public class CommentDAOimp implements CommentDAO {
 
 	private static Logger logger = LoggerFactory.getLogger(CommentDAOimp.class);
 	private SqlSession sql;
-	private static String namespace = "com.king.mappers.commentMapper";
+	private static String namespace = "com.gipkok.mappers.commentMapper";
 	
 	public CommentDAOimp() {
-		new DBBuilder();
-		sql = DBBuilder.getFactory().openSession();
+		new DBBuilderForPjt();
+		sql = DBBuilderForPjt.getFactory().openSession();
 	}
 	
 	@Override
@@ -51,7 +51,9 @@ public class CommentDAOimp implements CommentDAO {
 
 	@Override
 	public int delete(Integer cno) {
-		return sql.delete(namespace);
+		int isRm = sql.delete(namespace+".rm", cno);
+		sql.commit();
+		return isRm;
 	}
 
 	

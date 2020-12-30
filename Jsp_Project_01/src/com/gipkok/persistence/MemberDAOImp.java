@@ -8,29 +8,27 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.gipkok.domain.MemberVO;
-import com.gipkok.orm.DBBuilder;
+import com.gipkok.orm.DBBuilderForPjt;
 
 public class MemberDAOImp implements MemberDAO{
 	private static Logger logger = LoggerFactory.getLogger(MemberDAOImp.class);
 	private SqlSession sql;
-	private static String namespace = "com.king.mappers.memberMapper"; //네임스페이스 주소값이 아닌이름. 
+	private static String namespace = "com.gipkok.mappers.memberMapper";
 	
 	public MemberDAOImp() {
-		new DBBuilder();
-		sql = DBBuilder.getFactory().openSession();
+		new DBBuilderForPjt();
+		sql = DBBuilderForPjt.getFactory().openSession();
 	}
 
 	@Override
 	public int insert(MemberVO mvo) {
-		int isOk = sql.insert(namespace+".join", mvo); //sql에 있는 insert가 바로뜸
-		if(isOk>0) {
+		int isOk = sql.insert(namespace+".join", mvo);
+		if(isOk > 0) {
 			sql.commit();
 			return isOk;
-			}else {
-				logger.info(">> insert error");
-				return 0;
-			}
-		//return sql.insert(namespace+".join", mvo);
+		}else {
+			return 0;
+		}		 
 	}
 
 	@Override
@@ -39,48 +37,44 @@ public class MemberDAOImp implements MemberDAO{
 	}
 
 	@Override
-	public ArrayList<MemberVO> selectList() {  //selectList가 return타입이 List이기 때문에 바꿔야함 ArrayList에서 List로 바꿈
+	public ArrayList<MemberVO> selectList() {
 		List<MemberVO> list = new ArrayList<>();
 		list = sql.selectList(namespace+".list");
 		return (ArrayList<MemberVO>) list;
 	}
+	
+	@Override
+	public MemberVO selectOne(String email) {
+		return sql.selectOne(namespace+".info" , email);
+	}
+
 
 	@Override
 	public int update(MemberVO mvo) {
-		int isUp = sql.update(namespace+".edit",mvo);
-		if(isUp>0) {
-			sql.commit();
-			return isUp;
-			}else {
-				logger.info(">> update error");
-				return 0;
-			}
+		return sql.update(namespace+".edit", mvo);
 	}
 
 	@Override
 	public int delete(String email) {
-		int isDel = sql.delete(namespace+".remove", email);
-		if(isDel>0) {
+
+		int isok= sql.delete(namespace+".rm",email);
+		if(isok > 0) {
 			sql.commit();
-			return isDel;
-			}else {
-				logger.info(">> update error");
-				return 0;
-			}
+			return isok;
+		}else {
+			return 0;
+		}
 	}
 
-	@Override
-	public MemberVO selectOne(String email) {
-		return sql.selectOne(namespace+".info",email);
-	}
 
 	@Override
 	public int selectCount(String email) {
-		return sql.selectOne(namespace+".emailCount", email);
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
-	@Override
-	public int selectCount() {
-		return sql.selectOne(namespace+".cnt");
-	}
+	
+	
+
+
 }

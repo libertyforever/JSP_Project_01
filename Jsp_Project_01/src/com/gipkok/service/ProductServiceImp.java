@@ -1,5 +1,6 @@
 package com.gipkok.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -53,5 +54,17 @@ public class ProductServiceImp implements ProductService{
 	@Override
 	public int totalCount() {
 		return pdao.selectCount();
+	}
+	@Override
+	public List<ProductVO> getViewCList() {
+		return pdao.selectViewCList();
+	}
+	@Override
+	public List<ProductVO> getOrderCList() {
+		return pdao.selectOrderClist();
+	}
+	@Override
+	public List<ProductVO> getCateCList(String pvo) {
+		return pdao.selectCateList(pvo);
 	}
 }

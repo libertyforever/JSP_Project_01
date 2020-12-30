@@ -12,8 +12,6 @@ public class ProductVO {
 	private String pname;
 	private String content;
 	private double price;
-	private String regdate;
-	private String moddate;
 	private String imgfile;
 	private String thumb;
 	
@@ -28,32 +26,27 @@ public class ProductVO {
 		this.imgfile = imgfile;
 	}
 	//리스트
-	public ProductVO(int pno, String category, String pname, double price, String moddate, String thumb) {
+	public ProductVO(int pno, String category, String pname, double price, String thumb) {
 		this.pno = pno;
 		this.category = category;
 		this.pname = pname;
 		this.price = price;
-		this.moddate = moddate;
 		this.thumb = thumb;
 	}
 	
 	//수정
-	public ProductVO(int pno, String category, String pname, String content, double price, String moddate,
-			String imgfile) {
+	public ProductVO(int pno, String category, String pname, String content, double price, String imgfile) {
 		this.pno = pno;
 		this.category = category;
 		this.pname = pname;
 		this.content = content;
 		this.price = price;
-		this.moddate = moddate;
 		this.imgfile = imgfile;
 	}
 	//디테일
-		public ProductVO(int pno, String category, String pname, String content, double price, String regdate,
-				String moddate, String imgfile, String thumb) {
-			this(pno,category,pname,price,content,imgfile);
-			this.regdate = regdate;
-			this.moddate = moddate;
+		public ProductVO(int pno, String category, String pname, String content, double price,
+				String imgfile, String thumb) {
+			this(pno,category,pname,content,price,imgfile);
 			this.thumb = thumb;
 		}
 	
@@ -92,18 +85,6 @@ public class ProductVO {
 	}
 	public void setPrice(double price) {
 		this.price = price;
-	}
-	public String getRegdate() {
-		return regdate;
-	}
-	public void setRegdate(String regdate) {
-		this.regdate = regdate;
-	}
-	public String getModdate() {
-		return moddate;
-	}
-	public void setModdate(String moddate) {
-		this.moddate = moddate;
 	}
 	public String getImgfile() {
 		return imgfile;

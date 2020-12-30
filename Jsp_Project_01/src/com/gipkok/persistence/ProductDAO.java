@@ -13,4 +13,7 @@ public interface ProductDAO {
 	public int update(ProductVO pvo);
 	public int delete(Integer pno);
 	public int selectCount();
+	public List<ProductVO> selectViewCList();
+	public List<ProductVO> selectOrderClist();
+	public List<ProductVO> selectCateList(String pvo);
 }

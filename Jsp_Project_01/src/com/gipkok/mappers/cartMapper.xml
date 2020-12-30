@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.gipkok.mappers.cartMapper">
+
+<insert id="join" parameterType="cavo">
+		insert into cartre (id, pno, cnt) values (#{id},  #{pno}, #{cnt})
+	</insert>
+	<select id="list" resultType="cavo">
+		select cano, id, cartre.pno, product.pname, cnt, product.thumb from cartre 
+		inner join product on cartre.pno = product.pno limit #{startNo}, #{pageSize}	
+	</select>
+	<delete id="rm" parameterType="java.lang.Integer">
+	   delete from cartre where cano=#{cano}
+	</delete>
+	<select id="cnt" resultType="java.lang.Integer">
+		select count(cano) from cartre;
+	</select>
+
+</mapper>

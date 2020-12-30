@@ -1,0 +1,28 @@
+2020-12-28 10:59:54,086 DEBUG o.a.i.l.LogFactory [http-nio-8088-exec-4] Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+2020-12-28 10:59:54,327 DEBUG o.a.i.d.p.PooledDataSource [http-nio-8088-exec-4] PooledDataSource forcefully closed/removed all connections.
+2020-12-28 10:59:54,327 DEBUG o.a.i.d.p.PooledDataSource [http-nio-8088-exec-4] PooledDataSource forcefully closed/removed all connections.
+2020-12-28 10:59:54,327 DEBUG o.a.i.d.p.PooledDataSource [http-nio-8088-exec-4] PooledDataSource forcefully closed/removed all connections.
+2020-12-28 10:59:54,328 DEBUG o.a.i.d.p.PooledDataSource [http-nio-8088-exec-4] PooledDataSource forcefully closed/removed all connections.
+2020-12-28 10:59:54,371 INFO c.g.o.DBBuilder [http-nio-8088-exec-4] Session >> fail
+2020-12-28 11:00:05,650 DEBUG o.a.i.d.p.PooledDataSource [Finalizer] PooledDataSource forcefully closed/removed all connections.
+2020-12-28 11:18:28,595 DEBUG o.a.i.l.LogFactory [http-nio-8088-exec-4] Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+2020-12-28 11:18:28,845 DEBUG o.a.i.d.p.PooledDataSource [http-nio-8088-exec-4] PooledDataSource forcefully closed/removed all connections.
+2020-12-28 11:18:28,846 DEBUG o.a.i.d.p.PooledDataSource [http-nio-8088-exec-4] PooledDataSource forcefully closed/removed all connections.
+2020-12-28 11:18:28,846 DEBUG o.a.i.d.p.PooledDataSource [http-nio-8088-exec-4] PooledDataSource forcefully closed/removed all connections.
+2020-12-28 11:18:28,846 DEBUG o.a.i.d.p.PooledDataSource [http-nio-8088-exec-4] PooledDataSource forcefully closed/removed all connections.
+2020-12-28 11:18:28,878 INFO c.g.o.DBBuilder [http-nio-8088-exec-4] Session >> fail
+2020-12-28 11:18:46,411 DEBUG o.a.i.d.p.PooledDataSource [Finalizer] PooledDataSource forcefully closed/removed all connections.
+2020-12-28 11:24:47,344 DEBUG o.a.i.l.LogFactory [http-nio-8088-exec-10] Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+2020-12-28 11:24:47,562 DEBUG o.a.i.d.p.PooledDataSource [http-nio-8088-exec-10] PooledDataSource forcefully closed/removed all connections.
+2020-12-28 11:24:47,562 DEBUG o.a.i.d.p.PooledDataSource [http-nio-8088-exec-10] PooledDataSource forcefully closed/removed all connections.
+2020-12-28 11:24:47,562 DEBUG o.a.i.d.p.PooledDataSource [http-nio-8088-exec-10] PooledDataSource forcefully closed/removed all connections.
+2020-12-28 11:24:47,562 DEBUG o.a.i.d.p.PooledDataSource [http-nio-8088-exec-10] PooledDataSource forcefully closed/removed all connections.
+2020-12-28 11:24:47,584 INFO c.g.o.DBBuilder [http-nio-8088-exec-10] Session >> fail
+2020-12-28 11:24:50,554 DEBUG o.a.i.d.p.PooledDataSource [Finalizer] PooledDataSource forcefully closed/removed all connections.
+2020-12-28 11:40:35,801 DEBUG o.a.i.l.LogFactory [http-nio-8088-exec-9] Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+2020-12-28 11:40:36,069 DEBUG o.a.i.d.p.PooledDataSource [http-nio-8088-exec-9] PooledDataSource forcefully closed/removed all connections.
+2020-12-28 11:40:36,069 DEBUG o.a.i.d.p.PooledDataSource [http-nio-8088-exec-9] PooledDataSource forcefully closed/removed all connections.
+2020-12-28 11:40:36,069 DEBUG o.a.i.d.p.PooledDataSource [http-nio-8088-exec-9] PooledDataSource forcefully closed/removed all connections.
+2020-12-28 11:40:36,069 DEBUG o.a.i.d.p.PooledDataSource [http-nio-8088-exec-9] PooledDataSource forcefully closed/removed all connections.
+2020-12-28 11:40:36,094 INFO c.g.o.DBBuilder [http-nio-8088-exec-9] Session >> fail
+2020-12-28 11:40:36,704 DEBUG o.a.i.d.p.PooledDataSource [Finalizer] PooledDataSource forcefully closed/removed all connections.

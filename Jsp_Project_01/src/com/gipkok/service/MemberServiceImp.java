@@ -32,24 +32,24 @@ public class MemberServiceImp implements MemberService{
 	}
 
 	@Override
-	public MemberVO getInfo(String email) {
-		return mdao.selectOne(email);
-	}
-	@Override
 	public int modify(MemberVO mvo) {
 		return mdao.update(mvo);
 	}
 
 	@Override
-	public int remove(String email) {
-		return mdao.delete(email);
+    public int remove(String email) {
+		
+		return 	mdao.delete(email);
 	}
 	@Override
 	public int emailCheck(String email) {
-		return mdao.selectCount(email); //뭔가의 수치값 받을때 count
+		return mdao.selectCount(email);
 	}
 	@Override
-	public int totalCount() {
-		return mdao.selectCount();
+	public MemberVO getInfo(String email) {
+	
+		return mdao.selectOne(email);
 	}
+	
+
 }

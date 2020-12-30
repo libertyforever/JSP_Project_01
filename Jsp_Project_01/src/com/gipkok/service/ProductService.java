@@ -14,5 +14,8 @@ public interface ProductService {
 	public int remove(Integer pno);
 	public int pnoCheck(String pno);
 	public int totalCount();
+	public List<ProductVO> getViewCList();
+	public List<ProductVO> getOrderCList();
+	public List<ProductVO> getCateCList(String pvo);
 	
 }

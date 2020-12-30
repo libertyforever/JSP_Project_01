@@ -2,6 +2,7 @@
    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html lang="en">
+<c:set var="ses" value="${ses_mvo}" scope="session"/>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,12 +26,11 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
     <script src="resources/js/jquery.js"></script>
-    <script src="resources/js/bootstrap.min.js"></script>
-	<script src="resources/js/jquery.scrollUp.min.js"></script>
-	<script src="resources/js/price-range.js"></script>
-    <script src="resources/js/jquery.prettyPhoto.js"></script>
-    <script src="resources/js/main.js"></script>
 </head><!--/head-->
+
+
+
+
 
 <body>
    <header id="header"><!--header-->
@@ -128,7 +128,7 @@
                         <li><a href="./index.jsp" class="active">Home</a></li>
                         <li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
 									<ul role="menu" class="sub-menu">
-										<li><a href="./product?sv=list">Products</a></li>
+										<li><a href="./product?sv=list&''">Products</a></li>
 										<li><a href="">Most View</a></li>
 										<li><a href="">Best Seller</a></li>
 									</ul></li> 

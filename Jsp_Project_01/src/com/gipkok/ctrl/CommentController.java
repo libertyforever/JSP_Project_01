@@ -22,14 +22,14 @@ import com.gipkok.service.CommentServiceImp;
 @WebServlet("/comment/*")
 public class CommentController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-      private CommentService csv;
-      private static Logger logger = LoggerFactory.getLogger(MemberController.class);
-    
-      public CommentController() {
-    	  csv = new CommentServiceImp();
-    }
-    
-      protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    private CommentService csv;
+    private static Logger logger = LoggerFactory.getLogger(MemberController.class);
+  
+    public CommentController() {
+  	  csv = new CommentServiceImp();
+  }
+  
+    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	    req.setCharacterEncoding("utf-8");
 	   	resp.setCharacterEncoding("utf-8");
 	   	resp.setContentType("text/html;charset=utf-8");
@@ -40,7 +40,8 @@ public class CommentController extends HttpServlet {
 	    String svlPath = req.getServletPath();
 	    logger.info("svlPath : " + svlPath);//@WebServlet : /comment
 	    String mapping = uri.substring(ctxPath.length()+svlPath.length()); 
-    	
+	    logger.info(mapping);
+  	
 	    switch (mapping) {
 		case "/add": 
 			int pno = Integer.parseInt(req.getParameter("pno"));
@@ -76,13 +77,18 @@ public class CommentController extends HttpServlet {
 			break;
 		case "mod": 
 			break;
-		case "rm": 
+		case "/rm": 
+			int cno = Integer.parseInt(req.getParameter("cno"));
+			logger.info(">>> cno : "+cno);
+			int isRm = csv.remove(cno);
+			PrintWriter out1 = resp.getWriter();
+			out1.print(isRm);
 			break;
 		default:
 			break;
 	    }
-    	
-    }
+  	
+  }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	service(request,response);
@@ -94,4 +100,3 @@ public class CommentController extends HttpServlet {
 
 }
 }
-

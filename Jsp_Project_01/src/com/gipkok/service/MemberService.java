@@ -11,6 +11,5 @@ public interface MemberService {
 	public MemberVO getInfo(String email);
 	public int modify(MemberVO mvo);
 	public int remove(String email);
-	public int emailCheck(String email5);
-	public int totalCount();
+	public int emailCheck(String email);
 }
