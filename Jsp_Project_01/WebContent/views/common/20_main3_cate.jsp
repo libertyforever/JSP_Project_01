@@ -25,7 +25,7 @@
 							<div class="panel-heading">
 								<h4 class="panel-title">
 									<%-- 리스트 목록 링크 사용 --%>
-									<a data-toggle="collapse" data-parent="#accordian" href="./product?sv=lic&ca=pm">
+									<a data-toggle="" data-parent="" href="./product?sv=lic&ca=pm">
 										<span class="badge pull-right"></span> 프라모델
 									</a>
 								</h4>
@@ -35,7 +35,7 @@
 							<div class="panel-heading">
 								<h4 class="panel-title">
 									<%-- 리스트 목록 링크 사용 --%>
-									<a data-toggle="collapse" data-parent="#accordian" href="./product?sv=lic&ca=lg">
+									<a data-toggle="" data-parent="" href="./product?sv=lic&ca=lg">
 										<span class="badge pull-right"></span> 조립블럭
 									</a>
 								</h4>
@@ -47,7 +47,7 @@
 							<div class="panel-heading">
 								<h4 class="panel-title">
 									<%-- 리스트 목록 링크 사용 --%>
-									<a data-toggle="collapse" data-parent="#accordian"
+									<a data-toggle="" data-parent=""
 										href="./product?sv=lic&ca=pg"> <span class="badge pull-right"></span>
 										입체퍼즐
 									</a>
@@ -93,10 +93,10 @@
 							<div class="product-image-wrapper">
 								<div class="single-products">
 									<div class="productinfo text-center">
-										<img src="./upload/${pvo2.thumb }"
-											alt="error" />
+										<a href="./product?sv=info&pno=${pvo2.pno }"><img src="./upload/${pvo2.thumb }"
+											alt="error" /></a>
 										<h2>${pvo2.price }</h2>
-										<p>${pvo2.pname }</p>
+										<p><a href="./product?sv=info&pno=${pvo2.pno }">${pvo2.pname }</a></p>
 										<a href="#" class="btn btn-default add-to-cart"><i
 											class="fa fa-shopping-cart"></i>Add to cart</a>
 									</div>

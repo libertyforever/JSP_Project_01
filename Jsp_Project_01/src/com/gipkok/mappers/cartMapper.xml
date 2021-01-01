@@ -7,11 +7,12 @@
 <mapper namespace="com.gipkok.mappers.cartMapper">
 
 <insert id="join" parameterType="cavo">
-		insert into cartre (id, pno, cnt) values (#{id},  #{pno}, #{cnt})
+		insert into cartre (id, pno, cnt) values (#{id}, #{pno}, #{cnt})
 	</insert>
 	<select id="list" resultType="cavo">
-		select cano, id, cartre.pno, product.pname, cnt, product.thumb from cartre 
-		inner join product on cartre.pno = product.pno limit #{startNo}, #{pageSize}	
+		select cano, id, cartre.pno, product.pname, cnt, product.thumb, product.price
+		from cartre	inner join product on cartre.pno = product.pno 
+		<!-- limit #{startNo}, #{pageSize} -->	
 	</select>
 	<delete id="rm" parameterType="java.lang.Integer">
 	   delete from cartre where cano=#{cano}

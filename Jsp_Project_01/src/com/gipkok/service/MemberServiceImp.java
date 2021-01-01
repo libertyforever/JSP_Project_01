@@ -42,8 +42,8 @@ public class MemberServiceImp implements MemberService{
 		return 	mdao.delete(email);
 	}
 	@Override
-	public int emailCheck(String email) {
-		return mdao.selectCount(email);
+	public int emailCheck(String id) {
+		return mdao.selectCount(id);
 	}
 	@Override
 	public MemberVO getInfo(String email) {

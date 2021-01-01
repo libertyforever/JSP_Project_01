@@ -28,7 +28,8 @@
 									<c:when test="${mvo.grade > 50 }">VIP</c:when>
 									<c:when test="${mvo.grade > 30 }">GOLD</c:when>
 									<c:when test="${mvo.grade > 10 }">SILVER</c:when>
-									<c:otherwise>일반회원</c:otherwise>
+									<c:when test="${mvo.grade >= 0 }"> BRONZE</c:when>
+									<c:otherwise>비회원</c:otherwise>
 							     </c:choose>
 							</td>
 							<td>

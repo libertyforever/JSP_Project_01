@@ -67,4 +67,8 @@ public class ProductServiceImp implements ProductService{
 	public List<ProductVO> getCateCList(String pvo) {
 		return pdao.selectCateList(pvo);
 	}
+	@Override
+	public int countUp(Integer pno) {
+		return pdao.countUp(pno);
+	}
 }

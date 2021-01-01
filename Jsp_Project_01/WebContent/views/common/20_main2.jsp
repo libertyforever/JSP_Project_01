@@ -25,7 +25,7 @@
 							<div class="panel-heading">
 								<h4 class="panel-title">
 									<%-- 리스트 목록 링크 사용 --%>
-									<a data-toggle="collapse" data-parent="#accordian" href="./product?sv=lic&ca=pm">
+									<a data-toggle="" data-parent="" href="./product?sv=lic&ca=pm">
 										<span class="badge pull-right"></span> 프라모델
 									</a>
 								</h4>
@@ -35,7 +35,7 @@
 							<div class="panel-heading">
 								<h4 class="panel-title">
 									<%-- 리스트 목록 링크 사용 --%>
-									<a data-toggle="collapse" data-parent="#accordian" href="./product?sv=lic&ca=lg">
+									<a data-toggle="" data-parent="" href="./product?sv=lic&ca=lg">
 										<span class="badge pull-right"></span> 조립블럭
 									</a>
 								</h4>
@@ -47,7 +47,7 @@
 							<div class="panel-heading">
 								<h4 class="panel-title">
 									<%-- 리스트 목록 링크 사용 --%>
-									<a data-toggle="collapse" data-parent="#accordian"
+									<a data-toggle="" data-parent=""
 										href="./product?sv=lic&ca=pg"> <span class="badge pull-right"></span>
 										입체퍼즐
 									</a>
@@ -85,10 +85,10 @@
 							<div class="product-image-wrapper">
 								<div class="single-products">
 									<div class="productinfo text-center">
-										<a href="./product?sv=info&pno=${pvo2.pno }"><img src="./upload/${pvo2.thumb }"
+										<a href="./product?sv=info&pno=${pvo2.pno }" onclick="countUp(${pvo2.pno});"><img src="./upload/${pvo2.thumb}"
 											alt="error" /></a>
 										<h2>${pvo2.price }</h2>
-										<p><a href="./product?sv=info&pno=${pvo2.pno }">${pvo2.pname }</a></p>
+										<p><a href="./product?sv=info&pno=${pvo2.pno }" onclick="countUp(${pvo2.pno});">${pvo2.pname }</a></p>
 										<a href="#" class="btn btn-default add-to-cart"><i
 											class="fa fa-shopping-cart"></i>Add to cart</a>
 									</div>
@@ -112,10 +112,10 @@
 							<div class="product-image-wrapper">
 								<div class="single-products">
 									<div class="productinfo text-center">
-										<a href="./product?sv=info&pno=${pvo1.pno }"><img src="./upload/${pvo1.thumb }"
+										<a href="./product?sv=info&pno=${pvo1.pno }" onclick="countUp(${pvo1.pno});"><img src="./upload/${pvo1.thumb }"
 											alt="./resources/images/product-details/similar1.jpg" /></a>
 										<h2>${pvo1.price }</h2>
-										<p><a href="./product?sv=info&pno=${pvo1.pno }">${pvo1.pname }</a></p>
+										<p><a href="./product?sv=info&pno=${pvo1.pno }" onclick="countUp(${pvo1.pno});">${pvo1.pname }</a></p>
 										<a href="#" class="btn btn-default add-to-cart"><i
 											class="fa fa-shopping-cart"></i>Add to cart</a>
 									</div>
@@ -136,10 +136,10 @@
 								<div class="product-image-wrapper">
 									<div class="single-products">
 										<div class="productinfo text-center">
-											<a href="./product?sv=info&pno=${pvo.pno }"><img src="./upload/${pvo.thumb }"
+											<a href="./product?sv=info&pno=${pvo.pno }" onclick="countUp(${pvo.pno});"><img src="./upload/${pvo.thumb }"
 												alt="error" /></a>
 											<h2>${pvo.price }</h2>
-											<p><a href="./product?sv=info&pno=${pvo.pno }">${pvo.pname }</a></p>
+											<p><a href="./product?sv=info&pno=${pvo.pno }" onclick="countUp(${pvo.pno});">${pvo.pname }</a></p>
 											<a href="#" class="btn btn-default add-to-cart"><i
 												class="fa fa-shopping-cart"></i>Add to cart</a>
 										</div>
@@ -158,3 +158,26 @@
 		</div>
 	</div>
 </section>
+
+<script type="text/javascript">
+
+function countUp(pno){
+	$.ajax({
+		url: "./product?sv=cntup",
+		type: "get",
+		data: {pno:pno}, 
+		success: function(result){
+			let res = parseInt(result);
+			if(res>0){
+				colsole.log(pno+" 조회수 up")
+			}else{
+				alert("조회수 업 실패")
+			}
+		},
+		error: function(msg){
+			alert("url connection error")
+		}
+	});		
+}
+
+</script>

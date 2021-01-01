@@ -23,7 +23,7 @@
 							<div class="panel-heading">
 								<h4 class="panel-title">
 									<%-- 리스트 목록 링크 사용 --%>
-									<a data-toggle="collapse" data-parent="#accordian" href="">
+									<a data-toggle="" data-parent="" href="./product?sv=lic&ca=pm">
 										<span class="badge pull-right"></span> 프라모델
 									</a>
 								</h4>
@@ -33,7 +33,7 @@
 							<div class="panel-heading">
 								<h4 class="panel-title">
 									<%-- 리스트 목록 링크 사용 --%>
-									<a data-toggle="collapse" data-parent="#accordian" href="#mens">
+									<a data-toggle="" data-parent="" href="./product?sv=lic&ca=lg">
 										<span class="badge pull-right"></span> 조립블럭
 									</a>
 								</h4>
@@ -45,8 +45,8 @@
 							<div class="panel-heading">
 								<h4 class="panel-title">
 									<%-- 리스트 목록 링크 사용 --%>
-									<a data-toggle="collapse" data-parent="#accordian"
-										href="#womens"> <span class="badge pull-right"></span>
+									<a data-toggle="" data-parent=""
+										href="./product?sv=lic&ca=pg"> <span class="badge pull-right"></span>
 										입체퍼즐
 									</a>
 								</h4>
@@ -55,7 +55,7 @@
 						<div class="panel panel-default">
 							<div class="panel-heading">
 								<h4 class="panel-title">
-									<a href="#">십자수/그리기</a>
+									<a href="./product?sv=lic&ca=ss">십자수/그리기</a>
 								</h4>
 							</div>
 						</div>
@@ -76,8 +76,7 @@
 					<!--product-details-->
 					<div class="col-sm-5">
 						<div class="view-product">
-							<img src="./upload/${pvo.imgfile}" alt="" />
-							<h3>ZOOM</h3>
+							<img src="./upload/${pvo.imgfile}" alt="" style="width:default;"/>
 						</div>
 						
 
@@ -89,17 +88,16 @@
 								alt="" />
 							<h2>${pvo.pname }</h2>
 							<p>Web ID: ${pvo.pno }</p>
+								<form action="./Cart" method="post">
 							<img src="images/product-details/rating.png" alt="" /> <span>
 								<span>${pvo.price } ₩</span> <label>Quantity:</label> <input
-								type="text" value="3" />
+                       		 type="number" name="cnt" value="1" />
 								</span>
 								
-								<form action="./Cart" method="post">
 							<input type="hidden" name="sv" value="join">
 								<input type="hidden" name="id" value="${ses_mvo.id}">
 								<input type="hidden" name="pno" value="${pvo.pno}">
 								<input type="hidden" name="pname" value="${pvo.pname}">
-								<input type="hidden" name="cnt" value="3">
 								<input type="hidden" name="thumb" value="${pvo.imgfile}">
 								<button type="submit" class="btn btn-fefault cart">
 									<i class="fa fa-shopping-cart"></i> Add to cart
@@ -113,7 +111,7 @@
 								<b>Condition:</b> New
 							</p>
 							<p>
-								<b>Brand:</b> E-SHOPPER
+								<b>Brand:</b> GipKok
 							</p>
 							<a href=""><img src="images/product-details/share.png"
 								class="share img-responsive" alt="" /></a>
@@ -153,18 +151,6 @@
 						<div class="tab-pane fade active in" id="reviews">
 						
 								
-								<div class="col-sm-12">
-								<hr>
-								<ul>
-									<li><a href=""><i class="fa fa-user"></i>EUGEN</a></li>
-									<li><a href=""><i class="fa fa-clock-o"></i>12:41 PM</a></li>
-									<li class="pull-right"><a href=""><i class="fa fa-calendar-o"></i>31 DEC
-											2014</a></li>
-								</ul>
-								<p>contents contents contents contents contents </p>
-								<button class="rmBtn pull-right">삭제</button>
-								</div>
-								
 								<div id="cmtList" class="col-sm-12">
 								</div>
 								
@@ -200,7 +186,7 @@
 <script>
 				$(function(){
 					pno = '<c:out value="${pvo.pno}"/>';
-					nick = '<c:out value="${ses_mvo.id}"/>';
+					id = '<c:out value="${ses_mvo.id}"/>';
 					getlistComment(pno);
 				});
 				
@@ -223,6 +209,7 @@
 					//$("#cmtList").append('<hr>');
 					//첫행 hr -> 필요없음
 					let w = ''; let c = ''; let d = '';
+					let inputText = '';
 					for (let cvo of listObj) {
 						for ( var key in cvo) {
 							//console.log(key+"="+cvo[key]); //key val 뭔지 확인하기
@@ -244,13 +231,22 @@
 								break;
 							}
 						}
-						$("#cmtList").append('<hr><ul><li><a href=""><i class="fa fa-user"></i>'+w
-								+'</a></li><li><a href=""><i class="fa fa-clock-o"></i>Rating</a></li>'
-								+'<li class="pull-right"><a href=""><i class="fa fa-calendar-o"></i>'+d
-								+'</a></li></ul><span>'+c+'</span>'
-								+'<button class="pull-right" onclick="delCom('+n
-								+');">삭제</button>');
+						if(w==id){
+							inputText += '<hr><ul><li><a href=""><i class="fa fa-user"></i>'+w
+							+'</a></li><li><a href=""><i class="fa fa-clock-o"></i>Rating</a></li>'
+							+'<li class="pull-right"><a href=""><i class="fa fa-calendar-o"></i>'+d
+							+'</a></li></ul><span>'+c+'</span>'
+							+'<button class="pull-right" onclick="delCom('+n
+							+');">삭제</button>';
+						}else{
+							inputText += '<hr><ul><li><a href=""><i class="fa fa-user"></i>'+w
+							+'</a></li><li><a href=""><i class="fa fa-clock-o"></i>Rating</a></li>'
+							+'<li class="pull-right"><a href=""><i class="fa fa-calendar-o"></i>'+d
+							+'</a></li></ul><span>'+c+'</span>';
+						}
+						
 					}
+						$("#cmtList").append(inputText);
 					
 				}
 					
@@ -278,13 +274,10 @@
 				
 				$("#cmtBtn").on("click", function(){
 					let cmt = $("#cmt").val();
-					console.log(pno);
-					console.log(nick);
-					console.log(cmt);
 					$.ajax({
 						url: "./comment/add",
 						type: "post",
-						data: {pno:pno, writer:nick, comment:cmt},
+						data: {pno:pno, writer:id, comment:cmt},
 						success: function(result){
 							console.log(result);
 							let res = parseInt(result);

@@ -68,9 +68,8 @@ public class MemberDAOImp implements MemberDAO{
 
 
 	@Override
-	public int selectCount(String email) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int selectCount(String id) {
+		return sql.selectOne(namespace+".chk",id);
 	}
 
 	

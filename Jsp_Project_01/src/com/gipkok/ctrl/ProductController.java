@@ -2,6 +2,7 @@ package com.gipkok.ctrl;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Enumeration;
 
@@ -57,7 +58,7 @@ public class ProductController extends HttpServlet {
 			pvo.setCategory(multi.getParameter("category"));
 			pvo.setPname(multi.getParameter("pname"));
 			pvo.setContent(multi.getParameter("content"));
-			pvo.setPrice(Double.parseDouble(multi.getParameter("price")));
+			pvo.setPrice(Integer.parseInt(multi.getParameter("price")));
 			
 			try {
 			Enumeration files = multi.getFileNames();
@@ -139,9 +140,9 @@ public class ProductController extends HttpServlet {
 			destPage = "index.jsp?rp=dtl";
 			break; 
 		case "mod":
-			int pno1 = Integer.parseInt(request.getParameter("pno"));
-			ProductVO pvo2 = psv.getInfo(pno1);
-			request.setAttribute("pvo", pvo2);
+			int pno2 = Integer.parseInt(request.getParameter("pno"));
+			ProductVO pvo3 = psv.getInfo(pno2);
+			request.setAttribute("pvo", pvo3);
 			destPage = "index.jsp?rp=pmod";
 			break;
 		case "upd":
@@ -151,11 +152,11 @@ public class ProductController extends HttpServlet {
 			
 			MultipartRequest multi1
 			= new MultipartRequest(request, savePath_up, maxSize_up, "utf-8", new DefaultFileRenamePolicy());
-		ProductVO pvo3= new ProductVO();
-		pvo3.setCategory(multi1.getParameter("category"));
-		pvo3.setPname(multi1.getParameter("pname"));
-		pvo3.setContent(multi1.getParameter("content"));
-		pvo3.setPrice(Double.parseDouble(multi1.getParameter("price")));
+		ProductVO pvo4= new ProductVO();
+		pvo4.setCategory(multi1.getParameter("category"));
+		pvo4.setPname(multi1.getParameter("pname"));
+		pvo4.setContent(multi1.getParameter("content"));
+		pvo4.setPrice(Integer.parseInt(multi1.getParameter("price")));
 		
 		try {
 		Enumeration files = multi1.getFileNames();
@@ -179,34 +180,41 @@ public class ProductController extends HttpServlet {
 			        .size(270, 270)
 			        .toFile(new File(thumbSavePath));
 				
-						pvo3.setThumb(thumbSavePath.substring(savePath_up.length()+1));
+						pvo4.setThumb(thumbSavePath.substring(savePath_up.length()+1));
 						logger.info(">>> 썸네일 생성 성공");
 					break;
 					default:
 						break;
 					}					
 				}
-				pvo3.setImgfile(fileName);
+				pvo4.setImgfile(fileName);
 			}else {
-				pvo3.setImgfile("Unattached");
+				pvo4.setImgfile("Unattached");
 			}						
 		}catch (Exception e) {
 			logger.info(">>> file re-upload fail");
 		}
 			
-			int isUp = psv.modify(pvo3);
+			int isUp = psv.modify(pvo4);
 			logger.info(">>> 상품 수정 : " + (isUp> 0 ? "성공" : "실패"));
-			request.setAttribute("pvo", pvo3);
+			request.setAttribute("pvo", pvo4);
 			destPage = "index.jsp?rp=dtl";
 			
 			break;
 		case "rm":
 			//ProductVO pvo4 = (ProductVO) (request.getAttribute("pvo"));
 			//int pno4 = pvo4.getPno();
-			int pno4 = Integer.parseInt(request.getParameter("pno"));
-			int isRem = psv.remove(pno4);
+			int pno5 = Integer.parseInt(request.getParameter("pno"));
+			int isRem = psv.remove(pno5);
 			destPage = "product?sv=list";
 			
+			break;
+		case "cntup":
+			int pno6 = Integer.parseInt(request.getParameter("pno"));
+			int isCntup = psv.countUp(pno6);
+			PrintWriter out = response.getWriter();
+			out.print(isCntup);
+			//destPage는 없어도 되는듯?
 			break;
 		default:
 		break;

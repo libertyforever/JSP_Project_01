@@ -11,5 +11,5 @@ public interface MemberDAO {
 	public MemberVO selectOne(String email);
 	public int update(MemberVO mvo);
 	public int delete(String email);
-	public int selectCount(String email);
+	public int selectCount(String id);
 }

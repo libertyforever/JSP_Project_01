@@ -16,4 +16,5 @@ public interface ProductDAO {
 	public List<ProductVO> selectViewCList();
 	public List<ProductVO> selectOrderClist();
 	public List<ProductVO> selectCateList(String pvo);
+	public int countUp(Integer pno);
 }

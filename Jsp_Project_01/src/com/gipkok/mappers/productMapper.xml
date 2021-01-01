@@ -29,6 +29,10 @@
 	<select id="cli" resultType="pvo" parameterType="java.lang.String">
 		select pno, category, pname, price, thumb, imgfile from product where category=#{category}
 	</select>
+	<update id="cntup" parameterType="java.lang.Integer">
+		update product set vcnt	= vcnt +1 where pno=#{pno}
+	</update>
+	
 
 	<select id="cnt" resultType="java.lang.Integer">
 		select count(pno) from product	

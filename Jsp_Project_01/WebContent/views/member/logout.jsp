@@ -11,8 +11,9 @@
 				<h2>로그아웃 되었습니다!</h2>
 				<h2>이용해 주셔서 감사합니다.</h2>
 				<h2>다음에 또 만나요!!</h2>
+				<div ><span id="seconds">5</span>초 뒤 초기화면으로 이동합니다.<br></div>
 			</div>
-			<div id="seconds">5</div>
+			
 		</div>
 	</div>
 </section>
@@ -21,7 +22,7 @@
 		//setTimeout(function(){location.replace("index.jsp");}, 3000);
 		setTimeout(() => {location.replace("index.jsp");}, 5000);
 		
-		let time = 5;
+		let time = 4;
 		   let i=0;
 		   setInterval(function(){
 		      let cd = time - i;

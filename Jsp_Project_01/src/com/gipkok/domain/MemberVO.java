@@ -20,6 +20,13 @@ public class MemberVO {
 		this.pwd = pwd;
 		this.nickname = nickname;
 	}
+	//입력
+		public MemberVO(String id,  String pwd, String nickname, int grade) {
+			this.id = id;
+			this.pwd = pwd;
+			this.nickname = nickname;
+			this.grade = grade;
+		}
 	//조회
 	public MemberVO(String id, String nickname, int grade,int cpn) {
 		this.id = id;

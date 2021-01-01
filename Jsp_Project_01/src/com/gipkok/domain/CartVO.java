@@ -1,9 +1,6 @@
 package com.gipkok.domain;
 
 
-
-
-
 public class CartVO  {
 	private int cano; // 카트 번호
 	private String id;  //구매자 아이디
@@ -11,9 +8,14 @@ public class CartVO  {
 	private int cnt; // 구매수량 
 	private String pname;  
 	private String thumb;
+	private int price;
 	
  public CartVO() {}
 //입력
+   public CartVO(String id, int pno, String pname, int cnt, String thumb, int price) {
+	   this(id, pno, pname, cnt, thumb);
+	   this.price=price;
+   }
    public CartVO(String id, int pno, String pname, int cnt, String thumb) {
 	   this.id = id;
 	   this.pno = pno;
@@ -22,7 +24,13 @@ public class CartVO  {
 	   this.thumb = thumb;
    }
 
-   public String getid() {
+public int getPrice() {
+	return price;
+}
+public void setPrice(int price) {
+	this.price = price;
+}
+public String getid() {
 		return id;
 	}
 	public void setid(String id) {

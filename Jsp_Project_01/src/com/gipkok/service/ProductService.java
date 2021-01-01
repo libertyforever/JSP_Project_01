@@ -17,5 +17,6 @@ public interface ProductService {
 	public List<ProductVO> getViewCList();
 	public List<ProductVO> getOrderCList();
 	public List<ProductVO> getCateCList(String pvo);
+	public int countUp(Integer pno);
 	
 }

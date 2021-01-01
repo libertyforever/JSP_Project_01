@@ -11,14 +11,14 @@ public class ProductVO {
 	private String category;
 	private String pname;
 	private String content;
-	private double price;
+	private int price;
 	private String imgfile;
 	private String thumb;
 	
 	public ProductVO() {
 	}
 	//생성
-	public ProductVO(String category, String pname, String content, double price, String imgfile) {
+	public ProductVO(String category, String pname, String content, int price, String imgfile) {
 		this.category = category;
 		this.pname = pname;
 		this.content = content;
@@ -26,7 +26,7 @@ public class ProductVO {
 		this.imgfile = imgfile;
 	}
 	//리스트
-	public ProductVO(int pno, String category, String pname, double price, String thumb) {
+	public ProductVO(int pno, String category, String pname, int price, String thumb) {
 		this.pno = pno;
 		this.category = category;
 		this.pname = pname;
@@ -35,7 +35,7 @@ public class ProductVO {
 	}
 	
 	//수정
-	public ProductVO(int pno, String category, String pname, String content, double price, String imgfile) {
+	public ProductVO(int pno, String category, String pname, String content, int price, String imgfile) {
 		this.pno = pno;
 		this.category = category;
 		this.pname = pname;
@@ -44,7 +44,7 @@ public class ProductVO {
 		this.imgfile = imgfile;
 	}
 	//디테일
-		public ProductVO(int pno, String category, String pname, String content, double price,
+		public ProductVO(int pno, String category, String pname, String content, int price,
 				String imgfile, String thumb) {
 			this(pno,category,pname,content,price,imgfile);
 			this.thumb = thumb;
@@ -80,10 +80,10 @@ public class ProductVO {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public double getPrice() {
+	public int getPrice() {
 		return price;
 	}
-	public void setPrice(double price) {
+	public void setPrice(int price) {
 		this.price = price;
 	}
 	public String getImgfile() {

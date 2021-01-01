@@ -17,8 +17,11 @@ import org.slf4j.LoggerFactory;
 import com.gipkok.domain.CartVO;
 import com.gipkok.domain.MemberVO;
 import com.gipkok.domain.Paging;
+import com.gipkok.domain.ProductVO;
 import com.gipkok.service.CartService;
 import com.gipkok.service.CartServiceImp;
+import com.gipkok.service.ProductService;
+import com.gipkok.service.ProductServiceImp;
 
 
 @WebServlet("/Cart")
@@ -46,6 +49,7 @@ public class CartController extends HttpServlet {
 			String pname = request.getParameter("pname");
 			int cnt = Integer.parseInt( request.getParameter("cnt"));
 			String thumb= request.getParameter("thumb");
+			
 			CartVO cavo = new CartVO(id, pno, pname, cnt, thumb);
 			int isJoin = casv.join(cavo);
 			logger.info(">>> CartController > join : "

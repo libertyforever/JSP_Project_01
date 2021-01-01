@@ -93,6 +93,19 @@ public class ProductDAOImp implements ProductDAO{
 	}
 
 
+	@Override
+	public int countUp(Integer pno) {
+		int isCu = sql.update(namespace+".cntup",pno);
+		if(isCu>0) {
+			sql.commit();
+			return isCu;
+			}else {
+				logger.info(">> count up error");
+				return 0;
+			}
+	}
+
+
 
 	
 

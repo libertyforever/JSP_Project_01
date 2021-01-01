@@ -77,16 +77,17 @@ public class MemberController extends HttpServlet {
 			String email4 = request.getParameter("id");
 			String nickname4 = request.getParameter("nickname");
 			String pwd4 = request.getParameter("pwd");
-			int isUp = msv.modify(new MemberVO(email4, pwd4, nickname4));
+			int grade = Integer.parseInt(request.getParameter("grade"));
+			int isUp = msv.modify(new MemberVO(email4, pwd4, nickname4, grade));
 			logger.info(">>> MemberController > update : "
 					+ (isUp > 0 ? "수정성공":"수정실패"));
 			destPage = "member?sv=list";
 			break;
 		case "check":
-			String email5 = request.getParameter("email");
-			logger.info(">>> email : " + email5);
-			int exist = msv.emailCheck(email5);
-			logger.info(">>> exist : " + exist);
+			String id1 = request.getParameter("id");
+			logger.info(">>> id : " + id1);
+			int exist = msv.emailCheck(id1);
+			logger.info(">>> id : " + exist);
 			PrintWriter out = response.getWriter();
 			out.print(exist);			
 			break;
