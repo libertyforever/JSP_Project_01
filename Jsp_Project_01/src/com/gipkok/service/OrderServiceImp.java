@@ -7,11 +7,17 @@ import org.slf4j.LoggerFactory;
 
 import com.gipkok.domain.OrderVO;
 import com.gipkok.domain.Paging;
+import com.gipkok.persistence.OrderDAO;
+import com.gipkok.persistence.OrderDAOImp;
 
 public class OrderServiceImp implements OrderService {
 
 	private static Logger logger = LoggerFactory.getLogger(OrderServiceImp.class);
-
+	private OrderDAO odao;
+	public OrderServiceImp() {
+		odao = new OrderDAOImp();
+	}
+	
 	@Override
 	public int regist(OrderVO ovo) {
 		return 0;

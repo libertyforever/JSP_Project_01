@@ -98,7 +98,7 @@
 						<div class="shop-menu clearfix pull-right">
 							<ul class="nav navbar-nav">
 								<li><a href="index.jsp?rp=join"><i class="fa fa-user"></i> join</a></li>
-								<li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
+								<li><a href="order/li"><i class="fa fa-crosshairs"></i> Checkout</a></li>
 								<li><a href="./Cart?sv=list"><i class="fa fa-shopping-cart"></i> Cart</a></li>
 								<li><a href="index.jsp?rp=login"><i class="fa fa-lock"></i> Login</a></li>
 							</ul>

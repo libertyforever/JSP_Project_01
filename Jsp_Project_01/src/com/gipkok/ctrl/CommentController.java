@@ -23,7 +23,7 @@ import com.gipkok.service.CommentServiceImp;
 public class CommentController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private CommentService csv;
-    private static Logger logger = LoggerFactory.getLogger(MemberController.class);
+    private static Logger logger = LoggerFactory.getLogger(CommentController.class);
   
     public CommentController() {
   	  csv = new CommentServiceImp();

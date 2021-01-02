@@ -50,6 +50,10 @@
 <c:when test="${view eq 'cList' }">
 	<c:set var="jsp" value="cart/list.jsp"/>
 </c:when>
+
+<c:when test="${view eq 'oList' }">
+	<c:set var="jsp" value="order/list.jsp"/>
+</c:when>
      
 </c:choose>
 
