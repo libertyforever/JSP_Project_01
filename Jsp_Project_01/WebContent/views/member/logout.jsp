@@ -9,9 +9,8 @@
 		<div class="row">
 			<div class="section-title">
 				<h2>로그아웃 되었습니다!</h2>
-				<h2>이용해 주셔서 감사합니다.</h2>
-				<h2>다음에 또 만나요!!</h2>
-				<div ><span id="seconds">5</span>초 뒤 초기화면으로 이동합니다.<br></div>
+				<h2>이용해 주셔서 감사합니다. 다음에 또 만나요!!</h2>
+				<h2><span id="seconds">5</span>초 뒤 초기화면으로 이동합니다.</h2>
 			</div>
 			
 		</div>

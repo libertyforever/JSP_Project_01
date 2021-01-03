@@ -44,7 +44,6 @@ public class ProductController extends HttpServlet {
 		
 		String sv = request.getParameter("sv");
 		String destPage = "";
-		logger.info(sv);
 		switch (sv) {
 		case "upl": 
 			String realPath=request.getServletContext().getRealPath("/");

@@ -84,12 +84,11 @@
 								<li><a href="./index.jsp?rp=reg"><i class="fa fa-crosshairs"></i> product input</a></li>
 							 </c:when>
 							 <c:otherwise>
-								<li><a href="#"><i class="fa fa-star"></i> list</a></li>
-								<li><a href="#"><i class="fa fa-crosshairs"></i> product input</a></li>
 							 </c:otherwise>
 							 </c:choose>
-							    <li><a><i class="fa fa-star"></i>${ses_mvo.nickname }</a></li> 
 								<li><a href="./Cart?sv=list"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+								<li><a href="ordera?sv=li&id=${ses_mvo.id }"><i class="fa fa-crosshairs"></i> Checkout</a></li>
+							    <li><a><i class="fa fa-star"></i>${ses_mvo.nickname }</a></li> 
 								<li><a href="index.jsp?rp=logout"><i class="fa fa-lock"></i> Logout</a></li>
 							</ul>
 						</div>
@@ -98,7 +97,6 @@
 						<div class="shop-menu clearfix pull-right">
 							<ul class="nav navbar-nav">
 								<li><a href="index.jsp?rp=join"><i class="fa fa-user"></i> join</a></li>
-								<li><a href="order/li"><i class="fa fa-crosshairs"></i> Checkout</a></li>
 								<li><a href="./Cart?sv=list"><i class="fa fa-shopping-cart"></i> Cart</a></li>
 								<li><a href="index.jsp?rp=login"><i class="fa fa-lock"></i> Login</a></li>
 							</ul>

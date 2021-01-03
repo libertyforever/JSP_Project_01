@@ -51,6 +51,9 @@
 	<c:set var="jsp" value="cart/list.jsp"/>
 </c:when>
 
+<c:when test="${view eq 'odrComp' }">
+	<c:set var="jsp" value="order/odrsuccess.jsp"/>
+</c:when>
 <c:when test="${view eq 'oList' }">
 	<c:set var="jsp" value="order/list.jsp"/>
 </c:when>

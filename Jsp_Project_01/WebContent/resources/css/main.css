@@ -869,10 +869,13 @@ h2.title {
 
 .productinfo img {
     width: 100%;
+    height: auto;
 }
 
 .productinfo {
     position: relative;
+    height: 400px;
+    max-height:200px;
 }
 
 .product-overlay {

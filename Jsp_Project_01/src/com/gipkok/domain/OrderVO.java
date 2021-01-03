@@ -11,6 +11,10 @@ public class OrderVO {
 	public OrderVO() {
 	}
 
+	public OrderVO(String id, String prdinfo, String regdate, int status) {
+		this(id, prdinfo, status);
+		this.regdate=regdate;
+	}
 	public OrderVO(String id, String prdinfo, int status) {
 		this.id = id;
 		this.prdinfo = prdinfo;

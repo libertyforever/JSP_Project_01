@@ -23,12 +23,18 @@ public class OrderDAOImp implements OrderDAO {
 	
 	@Override
 	public int insert(OrderVO ovo) {
+		int isReg = sql.insert(namespace+".reg",ovo);
+		if(isReg > 0){
+			sql.commit();
+			return isReg;
+		}else{
 		return 0;
+	}
 	}
 
 	@Override
-	public List<OrderVO> selectlist(Paging paging) {
-		return null;
+	public List<OrderVO> selectlist(String id) {
+		return sql.selectList(namespace+".li", id);
 	}
 
 	@Override
@@ -39,5 +45,10 @@ public class OrderDAOImp implements OrderDAO {
 	@Override
 	public int totalCount() {
 		return 0;
+	}
+
+	@Override
+	public OrderVO selectlistone(int ono) {
+		return sql.selectOne(namespace+".lio",ono);
 	}
 }

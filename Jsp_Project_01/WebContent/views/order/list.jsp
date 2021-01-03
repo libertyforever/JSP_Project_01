@@ -10,51 +10,45 @@
 				<table class="table table-condensed">
 					<thead>
 						<tr class="cart_menu">
-							<td class="image">CART NO</td>
-							<td class="image">ID</td>
-							<td class="image">Product No</td>
-							<td class="image">Product Name</td>
-							<td class="image">Count</td>
+							<td class="image">Order NO</td>
+							<td class="image">Product info</td>
+							<td class="image">Order date</td>
 							<td class="image">Price</td>
-							<td class="">Option</td>
+							<td class="">Status</td>
 						</tr>
 					</thead>
 					<tbody> 
-					<c:set var="sum_item" value="0"></c:set>
-					  <c:forEach items="${cList}" var="cavo">   
-					  <c:if test="${fn:trim(ses_mvo.id) eq fn:trim(cavo.id)}">
-						 <tr>
+					<%-- <c:set var="sum_item" value="0"></c:set> --%>
+					<c:set var="i" value="0"></c:set>
+					  <c:forEach items="${oList}" var="ovo">   
+					  	<c:set var="i" value="${i + 1}"></c:set>
+						 <tr id="${i}">
 							<td class="image">
-								<h4>${cavo.cano}</h4>
-							</td>
-							<td class="cart_price">
-								${cavo.id}
+								<h4>${ovo.ono}</h4>
 							</td>
 							<td class=image>
-								 ${cavo.pno}
+								- 
 							</td>
 							<td class="cart_quantity">
-								 ${cavo.pname}
+								${ovo.regdate}
 							</td>
 							<td class="image">
-								 ${cavo.cnt}
+								계 : 
 							</td>
-							<td class="">
-							 <c:set var="sum_item" value="${sum_item + cavo.cnt * cavo.price }"></c:set>
-								 단품 : ${cavo.price} ₩<br>소계: ${cavo.cnt * cavo.price} ₩ 
+							<td class="image">
+								${ovo.status } 
 							</td>
-							<td>
-							 <a href="./Cart?sv=rm&cano=${cavo.cano}"> 구매 </a>
-							
-							 <a href="./Cart?sv=rm&cano=${cavo.cano}"> 삭제 </a>
-							</td>
-							<td>
-							</td>
+							<%-- <td class="">
+							 <c:set var="sum_item" value="${sum_item + ovo.cnt * ovo.price }"></c:set>
+								 단품 : ${ovo.price} ₩<br>소계: ${ovo.cnt * cavo.price} ₩ 
+							</td> --%>
 						 </tr>
-						     </c:if>
 				      </c:forEach>
 					</tbody>
 				</table>
+				
+				<button onclick="printName(1,33,33);">일단 눌러봐</button>
+				
 				</c:when>
 				<c:otherwise>
 				<h2 >로그인부터 해주세요!</h2>
@@ -85,16 +79,82 @@
 					</c:if>
 				</div> --%>
 				
-				<div class="cart-sum product-information pull-right" style="margin-bottom: 20px;'">
-				<form action="./order" method="post">
-								<span><span>Total : ${sum_item } ₩</span></span> 
-								<button type="submit" class="btn btn-fefault cart">
-									<i class="fa fa-crosshairs"></i> 모두 구매하기
-								</button>
-								</form>
-				</div>
 				
 				
 		</div>
 	</section> <!--/#cart_items-->
 	
+<script type="text/javascript">
+$(function(){
+	// 보낼 것 ono
+	// 받아올 것 id, prdinfo의 첫상품 이름과 그 갯수, 합계
+	lastNum = parseInt("<c:out value='${i}'/>");
+	
+	
+	for (var i = 1; i < lastNum+1; i++) {
+	var ono = parseInt($("#"+i).find("td:nth-child(1) > h4").html()); // 첫 상품 ono;
+	//test2 = $("#1").find("td:nth-child(2)").html(); //정보들어갈 장소;
+
+	ono2json(i, ono);
+	}
+
+});
+
+
+function ono2json(i, ono){
+	let n=""; let s=""; let c="";
+	$.ajax({
+		url:"./ordera?sv=lio",
+		type:"post",
+		data:{ono:ono},
+		success:function(jsonPrdObj){
+			let prdObj = JSON.parse(jsonPrdObj);
+			//prd1Name = parseInt(prd1Name);
+			//prdSum = parseInt(prdSum);
+			
+			for ( var key in prdObj) {
+				//console.log(key+"="+cvo[key]); //key val 뭔지 확인하기
+				switch (key) {
+				case "prd1Name":
+					n = prdObj[key];
+					break;
+				case "prdSum":
+					s = prdObj[key];
+					break;
+				case "prdCount":
+					c = prdObj[key];
+					break;
+				default:
+					break;
+				}
+			printName(i,n,c);
+			printPrice(i,s);
+			}
+			//let prdCount = "<c:out value='${prdCount}'/>";
+			//let prd1Name = "<c:out value='${prd1Name}'/>";
+			//let prdSum = "<c:out value='${prdSum}'/>";
+			
+			//console.log(n+ "- test n"+i+"번째");
+			//console.log(s+ "- test s"+i+"번째");
+			//console.log(c+ "- test n"+i+"번째");
+			
+		
+			//printPrdInfo(prdCount, prd1Name, prdSum);
+		},
+		error:function(msg){
+			alert('연결실패');
+		}
+	});
+	
+	
+}
+
+
+function printName(i,n,c){
+	$("#"+i).find("td:nth-child(2)").html("<span>"+n+" 외 "+c+" 종</span>");
+}
+function printPrice(i,s){
+	$("#"+i).find("td:nth-child(4)").html("<span>계:"+ s +"원</span>");
+}
+
+</script>

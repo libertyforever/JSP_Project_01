@@ -5,4 +5,13 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.gipkok.mappers.orderMapper">
+<insert id="reg" parameterType="ovo">
+	insert into ordera (id, prdinfo, regdate, status) values (#{id}, #{prdinfo}, now(), #{status})
+</insert>
+<select id="li" parameterType="java.lang.String" resultType="ovo">
+	select * from ordera where id=#{id}
+</select>
+<select id="lio" parameterType="java.lang.Integer" resultType="ovo">
+	select * from ordera where ono=#{ono}
+</select>
 </mapper>

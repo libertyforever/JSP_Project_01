@@ -20,12 +20,12 @@ public class OrderServiceImp implements OrderService {
 	
 	@Override
 	public int regist(OrderVO ovo) {
-		return 0;
+		return odao.insert(ovo);
 	}
 
 	@Override
-	public List<OrderVO> getlist(Paging paging) {
-		return null;
+	public List<OrderVO> getlist(String id) {
+		return odao.selectlist(id);
 	}
 
 	@Override
@@ -36,5 +36,10 @@ public class OrderServiceImp implements OrderService {
 	@Override
 	public int totalCount() {
 		return 0;
+	}
+
+	@Override
+	public OrderVO getlistone(int ono) {
+		return odao.selectlistone(ono);
 	}
 }
