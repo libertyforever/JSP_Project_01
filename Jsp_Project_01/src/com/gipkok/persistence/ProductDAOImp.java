@@ -37,7 +37,7 @@ public class ProductDAOImp implements ProductDAO{
 	}
 	@Override
 	public List<ProductVO> selectList(Paging paging) {  //selectList가 return타입이 List이기 때문에 바꿔야함 ArrayList에서 List로 바꿈
-		return sql.selectList(namespace+".list", paging); 
+		return sql.selectList(namespace+".lip", paging); 
 	}
 	@Override
 	public int update(ProductVO pvo) {
@@ -76,14 +76,14 @@ public class ProductDAOImp implements ProductDAO{
 
 
 	@Override
-	public List<ProductVO> selectViewCList() {
-		return sql.selectList(namespace+".vcnt");
+	public List<ProductVO> selectViewCList(Paging page) {
+		return sql.selectList(namespace+".vcnt",page);
 	}
 
 
 	@Override
-	public List<ProductVO> selectOrderClist() {
-		return sql.selectList(namespace+".ocnt");
+	public List<ProductVO> selectOrderClist(Paging page) {
+		return sql.selectList(namespace+".ocnt",page);
 	}
 
 
@@ -103,6 +103,13 @@ public class ProductDAOImp implements ProductDAO{
 				logger.info(">> count up error");
 				return 0;
 			}
+	}
+
+
+	@Override
+	public void plusUpOdr(String pno) {
+		int isPu = sql.update(namespace+".pluo");
+		sql.commit();
 	}
 
 

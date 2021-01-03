@@ -56,11 +56,9 @@ public class CartController extends HttpServlet {
 			int clPage = request.getParameter("cp") != null ?
 					Integer.parseInt(request.getParameter("cp")) : 1;
 			int total = casv.totalCount();
-			Paging paging = new Paging(clPage, total);
 			ArrayList<CartVO> cList = new ArrayList<>();
-			cList = (ArrayList<CartVO>) casv.getlist(paging);
+			cList = (ArrayList<CartVO>) casv.getlist();
 			request.setAttribute("cList", cList);
-			request.setAttribute("paging", paging);
 			destPage = "index.jsp?rp=cList";
 			break;
 			

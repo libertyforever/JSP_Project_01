@@ -1,7 +1,7 @@
 package com.gipkok.domain;
 
 public class Paging {
-	public int pageSize = 10; // 한페이지에 보여줄 글 수.
+	public int pageSize; // 한페이지에 보여줄 글 수.
 	public int pageBlock = 5; // pagenation 숫자 네비게이션 
 	public int total; // db에 등록된 총 글 수.
 	public int clPage; // 클릭한 페이지의 수
@@ -13,9 +13,10 @@ public class Paging {
 
 public Paging() {
 }
-public Paging(int clPage, int total) {
+public Paging(int clPage, int total, int pageSize) {
 	this.clPage = clPage;
 	this.total = total;
+	this.pageSize = pageSize;
 	this.endNo = clPage * pageSize;
 	this.startNo = (endNo - pageSize);
 	this.totalPage = (total/pageSize) +1;

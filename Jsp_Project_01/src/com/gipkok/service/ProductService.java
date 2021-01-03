@@ -14,9 +14,10 @@ public interface ProductService {
 	public int remove(Integer pno);
 	public int pnoCheck(String pno);
 	public int totalCount();
-	public List<ProductVO> getViewCList();
-	public List<ProductVO> getOrderCList();
+	public List<ProductVO> getViewCList(Paging paging);
+	public List<ProductVO> getOrderCList(Paging paging);
 	public List<ProductVO> getCateCList(String pvo);
 	public int countUp(Integer pno);
+	public void countUpOdr(String pno);
 	
 }

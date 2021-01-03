@@ -28,9 +28,9 @@ public class CartServiceImp implements CartService {
 
 	
 	@Override
-	public List<CartVO> getlist(Paging paging) {
+	public List<CartVO> getlist() {
 		
-		return cadao.selectList(paging);
+		return cadao.selectList();
 	}
 
 	@Override

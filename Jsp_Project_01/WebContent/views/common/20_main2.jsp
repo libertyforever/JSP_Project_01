@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 
 
@@ -87,7 +88,7 @@
 									<div class="productinfo text-center">
 										<a href="./product?sv=info&pno=${pvo2.pno }" onclick="countUp(${pvo2.pno});"><img src="./upload/${pvo2.thumb}"
 											alt="error" /></a>
-										<h2>${pvo2.price }</h2>
+										<h2><fmt:formatNumber value="${pvo2.price}" pattern="₩ #,###.##"/></h2>
 										<p><a href="./product?sv=info&pno=${pvo2.pno }" onclick="countUp(${pvo2.pno});">${pvo2.pname }</a></p>
 										<a href="#" class="btn btn-default add-to-cart"><i
 											class="fa fa-shopping-cart"></i>Add to cart</a>
@@ -114,7 +115,7 @@
 									<div class="productinfo text-center">
 										<a href="./product?sv=info&pno=${pvo1.pno }" onclick="countUp(${pvo1.pno});"><img src="./upload/${pvo1.thumb }"
 											alt="./resources/images/product-details/similar1.jpg" /></a>
-										<h2>${pvo1.price }</h2>
+										<h2><fmt:formatNumber value="${pvo1.price}" pattern="₩ #,###.##"/></h2>
 										<p><a href="./product?sv=info&pno=${pvo1.pno }" onclick="countUp(${pvo1.pno});">${pvo1.pname }</a></p>
 										<a href="#" class="btn btn-default add-to-cart"><i
 											class="fa fa-shopping-cart"></i>Add to cart</a>
@@ -138,7 +139,7 @@
 										<div class="productinfo text-center">
 											<a href="./product?sv=info&pno=${pvo.pno }" onclick="countUp(${pvo.pno});"><img src="./upload/${pvo.thumb }"
 												alt="error" /></a>
-											<h2>${pvo.price }</h2>
+											<h2><fmt:formatNumber value="${pvo.price}" pattern="₩ #,###.##"/></h2>
 											<p><a href="./product?sv=info&pno=${pvo.pno }" onclick="countUp(${pvo.pno});">${pvo.pname }</a></p>
 											<a href="#" class="btn btn-default add-to-cart"><i
 												class="fa fa-shopping-cart"></i>Add to cart</a>

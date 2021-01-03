@@ -103,10 +103,10 @@ public class ProductController extends HttpServlet {
 			break;
 		
 		case "li":
-			Paging page = new Paging(0, 10);
+			Paging page = new Paging(1, 10, 12); //첫페이지고정갑의미없음
 			ArrayList<ProductVO> pList = (ArrayList<ProductVO>) psv.getList(page);
-			ArrayList<ProductVO> pvList = (ArrayList<ProductVO>) psv.getViewCList();
-			ArrayList<ProductVO> poList = (ArrayList<ProductVO>) psv.getOrderCList();
+			ArrayList<ProductVO> pvList = (ArrayList<ProductVO>) psv.getViewCList(page);
+			ArrayList<ProductVO> poList = (ArrayList<ProductVO>) psv.getOrderCList(page);
 			request.setAttribute("pList", pList);
 			request.setAttribute("pvList", pvList);
 			request.setAttribute("poList", poList);
@@ -121,16 +121,39 @@ public class ProductController extends HttpServlet {
 			destPage = "index.jsp?rp=cate";
 			break;
 		
-		case "list":
+		case "lip":
 			int clPage = request.getParameter("cp") != null ? 
 					Integer.parseInt(request.getParameter("cp")) : 1;
 			int total = psv.totalCount();
-			Paging paging = new Paging(clPage, total); //클릭값이랑 토탈페이지를 알기위해 DAO로 다녀와야함
+			Paging paging = new Paging(clPage, total, 12); //클릭값이랑 토탈페이지를 알기위해 DAO로 다녀와야함
+			//페이지에 들어갈 수 12개로 정함요.
 			ArrayList<ProductVO> pList1 = (ArrayList<ProductVO>) psv.getList(paging);
 			request.setAttribute("pList", pList1);
 			request.setAttribute("paging", paging);
-			destPage = "index.jsp?rp=pli";
+			destPage = "index.jsp?rp=mainp";
 			break;
+		case "lio":
+			int clPage1 = request.getParameter("cp") != null ? 
+					Integer.parseInt(request.getParameter("cp")) : 1;
+			int total1 = psv.totalCount();
+			Paging paging1 = new Paging(clPage1, total1, 12); //클릭값이랑 토탈페이지를 알기위해 DAO로 다녀와야함
+			//페이지에 들어갈 수 12개로 정함요.
+			ArrayList<ProductVO> oList = (ArrayList<ProductVO>) psv.getOrderCList(paging1);
+			request.setAttribute("oList", oList);
+			request.setAttribute("paging", paging1);
+			destPage = "index.jsp?rp=maino";
+			break;
+		case "liv":
+			int clPage2 = request.getParameter("cp") != null ? 
+					Integer.parseInt(request.getParameter("cp")) : 1;
+			int total2 = psv.totalCount();
+			Paging paging2 = new Paging(clPage2, total2, 12); //클릭값이랑 토탈페이지를 알기위해 DAO로 다녀와야함
+			//페이지에 들어갈 수 12개로 정함요.
+			ArrayList<ProductVO> vList = (ArrayList<ProductVO>) psv.getViewCList(paging2);
+			request.setAttribute("vList", vList);
+			request.setAttribute("paging", paging2);
+			destPage = "index.jsp?rp=mainv";
+			break;	
 		case "info":
 			//info를 가져오기 위해서는? 무엇을?
 			int pno = Integer.parseInt(request.getParameter("pno"));

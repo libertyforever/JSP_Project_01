@@ -56,12 +56,12 @@ public class ProductServiceImp implements ProductService{
 		return pdao.selectCount();
 	}
 	@Override
-	public List<ProductVO> getViewCList() {
-		return pdao.selectViewCList();
+	public List<ProductVO> getViewCList(Paging page) {
+		return pdao.selectViewCList(page);
 	}
 	@Override
-	public List<ProductVO> getOrderCList() {
-		return pdao.selectOrderClist();
+	public List<ProductVO> getOrderCList(Paging page) {
+		return pdao.selectOrderClist(page);
 	}
 	@Override
 	public List<ProductVO> getCateCList(String pvo) {
@@ -70,5 +70,9 @@ public class ProductServiceImp implements ProductService{
 	@Override
 	public int countUp(Integer pno) {
 		return pdao.countUp(pno);
+	}
+	@Override
+	public void countUpOdr(String pno) {
+		pdao.plusUpOdr(pno);
 	}
 }

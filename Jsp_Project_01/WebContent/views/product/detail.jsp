@@ -115,6 +115,14 @@
 							</p>
 							<a href=""><img src="images/product-details/share.png"
 								class="share img-responsive" alt="" /></a>
+								<c:choose>
+											 <c:when test="${ses_mvo.grade == 101 }">
+											 <form action="./product?sv=mod" method="get">
+											 <input type="hidden" name="pno" value="${pvo.pno}">
+											 <button type="submit" class="btn btn-default add-to-cart pull-right">
+												<i class="fa fa-shopping-cart"></i>Modify this item
+											</button></form>
+											 </c:when></c:choose>
 						</div>
 						<!--/product-information-->
 					</div>
@@ -143,6 +151,8 @@
 											<button type="button" class="btn btn-default add-to-cart">
 												<i class="fa fa-shopping-cart"></i>Add to cart
 											</button>
+											
+											
 										</div>
 									</div>
 								</div>
@@ -166,7 +176,7 @@
 									<span><input type="text" value="${ses_mvo.nickname }" readonly/> 
 									<input type="hidden"></span>
 									<textarea name="comment" id="cmt"></textarea>
-									<b>Rating: </b> <img src="images/product-details/rating.png"
+									<b><!-- Rating: --></b> <img src="images/product-details/rating.png"
 										alt="" />
 									<button type="button" id="cmtBtn" class="btn btn-default pull-right">
 										Submit</button>

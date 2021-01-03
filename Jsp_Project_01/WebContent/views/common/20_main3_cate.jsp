@@ -93,10 +93,10 @@
 							<div class="product-image-wrapper">
 								<div class="single-products">
 									<div class="productinfo text-center">
-										<a href="./product?sv=info&pno=${pvo2.pno }"><img src="./upload/${pvo2.thumb }"
+										<a href="./product?sv=info&pno=${pvo2.pno }" onclick="countUp(${pvo2.pno});"><img src="./upload/${pvo2.thumb }"
 											alt="error" /></a>
 										<h2>${pvo2.price }</h2>
-										<p><a href="./product?sv=info&pno=${pvo2.pno }">${pvo2.pname }</a></p>
+										<p><a href="./product?sv=info&pno=${pvo2.pno }" onclick="countUp(${pvo2.pno});">${pvo2.pname }</a></p>
 										<a href="#" class="btn btn-default add-to-cart"><i
 											class="fa fa-shopping-cart"></i>Add to cart</a>
 									</div>
@@ -114,5 +114,26 @@
 				<!--/recommended_items-->
 			</div>
 		</div>
-	</div>
 </section>
+<script type="text/javascript">
+
+function countUp(pno){
+	$.ajax({
+		url: "./product?sv=cntup",
+		type: "get",
+		data: {pno:pno}, 
+		success: function(result){
+			let res = parseInt(result);
+			if(res>0){
+				colsole.log(pno+" 조회수 up")
+			}else{
+				alert("조회수 업 실패")
+			}
+		},
+		error: function(msg){
+			alert("url connection error")
+		}
+	});		
+}
+
+</script>

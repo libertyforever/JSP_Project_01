@@ -9,7 +9,7 @@ import com.gipkok.domain.Paging;
 
 public interface CartService {
 	public int join(CartVO cavo);
-	public List<CartVO> getlist(Paging paging);
+	public List<CartVO> getlist();
 	public int remove(int cano);
 	public int totalCount();
 }

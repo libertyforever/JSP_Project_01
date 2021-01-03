@@ -10,17 +10,20 @@
 		insert into product (category, pname, content, price, imgfile, thumb)
 		values (#{category}, #{pname}, #{content}, #{price}, #{imgfile}, #{thumb})
 	</insert>
-	<select id="list" resultType="pvo" parameterType="paging"> 
+	<select id="lip" resultType="pvo" parameterType="paging"> 
 		select pno, category, pname, price, thumb, imgfile from product
+		limit #{startNo}, #{pageSize}
 	</select>
 	<select id="info" parameterType="java.lang.Integer" resultType="pvo">
 		select * <include refid="base"></include>
 	</select>
-	<select id="vcnt" resultType="pvo">
-		select pno, category, pname, price, thumb, imgfile from product order by vcnt desc	
+	<select id="vcnt" resultType="pvo" parameterType="paging">
+		select pno, category, pname, price, thumb, imgfile from product order by vcnt desc
+		limit #{startNo}, #{pageSize}	
 	</select>
-	<select id="ocnt" resultType="pvo">
-		select pno, category, pname, price, thumb, imgfile from product order by ocnt desc	
+	<select id="ocnt" resultType="pvo" parameterType="paging">
+		select pno, category, pname, price, thumb, imgfile from product order by ocnt desc
+		limit #{startNo}, #{pageSize}	
 	</select>
 	<update id="mod" parameterType="pvo">
 		update product set category=#{category}, pname=#{pname}, content=#{content},
@@ -31,6 +34,9 @@
 	</select>
 	<update id="cntup" parameterType="java.lang.Integer">
 		update product set vcnt	= vcnt +1 where pno=#{pno}
+	</update>
+	<update id="cntup" parameterType="java.lang.Integer">
+		update product set ocnt	= ocnt +1 where pno=#{pno}
 	</update>
 	
 

@@ -79,7 +79,7 @@
 							<ul class="nav navbar-nav">
 							<c:choose>
 							 <c:when test="${ses_mvo.grade == 101 }">
-								<li><a href="./member?sv=list"><i class="fa fa-star"></i> list</a></li>
+								<li><a href="./member?sv=list"><i class="fa fa-star"></i>mbr list</a></li>
 								<%-- 상품입력란 입력해주세요! --%>
 								<li><a href="./index.jsp?rp=reg"><i class="fa fa-crosshairs"></i> product input</a></li>
 							 </c:when>
@@ -126,9 +126,9 @@
                         <li><a href="./index.jsp" class="active">Home</a></li>
                         <li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
 									<ul role="menu" class="sub-menu">
-										<li><a href="./product?sv=list">Products</a></li>
-										<li><a href="">Most View</a></li>
-										<li><a href="">Best Seller</a></li>
+										<li><a href="./product?sv=lip">Products</a></li>
+										<li><a href="./product?sv=liv">Most View</a></li>
+										<li><a href="./product?sv=lio">Best Seller</a></li>
 									</ul></li> 
                      </ul>
                   </div>

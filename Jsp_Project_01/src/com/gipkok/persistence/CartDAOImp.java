@@ -37,8 +37,8 @@ public class CartDAOImp implements CartDAO {
 	}
 
 	@Override
-	public List<CartVO> selectList(Paging paging) {
-		return sql.selectList(namespace + ".list", paging);
+	public List<CartVO> selectList() {
+		return sql.selectList(namespace + ".list");
 	}
 
 	@Override

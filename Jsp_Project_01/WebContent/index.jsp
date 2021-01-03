@@ -12,7 +12,15 @@
 <c:when test="${view eq 'main' }">
 	<c:set var="jsp" value="common/20_main2.jsp"></c:set>
 </c:when>
-   
+<c:when test="${view eq 'mainp' }">
+	<c:set var="jsp" value="common/21_mainp.jsp"></c:set>
+</c:when>
+<c:when test="${view eq 'maino' }">
+	<c:set var="jsp" value="common/22_maino.jsp"></c:set>
+</c:when>
+<c:when test="${view eq 'mainv' }">
+	<c:set var="jsp" value="common/23_mainv.jsp"></c:set>
+</c:when>
 <c:when test="${view eq 'cate' }">
 	<c:set var="jsp" value="common/20_main3_cate.jsp"></c:set>
 </c:when>
@@ -36,9 +44,6 @@
 </c:when>
 <c:when test="${view eq 'reg' }">
 	<c:set var="jsp" value="product/upload.jsp"></c:set>
-</c:when>
-<c:when test="${view eq 'pli' }">
-	<c:set var="jsp" value="product/list.jsp"></c:set>
 </c:when>
 <c:when test="${view eq 'dtl' }">
 	<c:set var="jsp" value="product/detail.jsp"></c:set>

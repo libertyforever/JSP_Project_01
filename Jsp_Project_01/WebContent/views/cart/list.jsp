@@ -63,10 +63,10 @@
 								<i class="fa fa-crosshairs"></i> 모두 구매하기
 							</button>
 						</form>
-						<button type="submit" onclick="sendJson();"
+						<!-- <button type="submit" onclick="sendJson();"
 							class="btn btn-fefault cart">
 							<i class="fa fa-crosshairs"></i> 모두 구매하기 (json 없앨예정)
-						</button>
+						</button> -->
 					</div>
 
 				</c:when>

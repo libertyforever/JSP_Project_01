@@ -36,7 +36,8 @@
 								계 : 
 							</td>
 							<td class="image">
-								${ovo.status } 
+								<c:when test=" ${ovo.status == 1 }">
+								주문완료</c:when><c:otherwise>주문오류</c:otherwise> 
 							</td>
 							<%-- <td class="">
 							 <c:set var="sum_item" value="${sum_item + ovo.cnt * ovo.price }"></c:set>
@@ -46,8 +47,6 @@
 				      </c:forEach>
 					</tbody>
 				</table>
-				
-				<button onclick="printName(1,33,33);">일단 눌러봐</button>
 				
 				</c:when>
 				<c:otherwise>
