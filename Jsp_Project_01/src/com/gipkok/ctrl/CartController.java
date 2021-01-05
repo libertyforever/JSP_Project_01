@@ -63,6 +63,7 @@ public class CartController extends HttpServlet {
 			break;
 			
 		case "rm":
+			String id = request.getParameter(name)
 			int cavo1 =Integer.parseInt(request.getParameter("cano"));
 			int cavo2 = casv.remove(cavo1); 
 			request.setAttribute("pvo", cavo2);

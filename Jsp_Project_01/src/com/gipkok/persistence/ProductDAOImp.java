@@ -108,7 +108,7 @@ public class ProductDAOImp implements ProductDAO{
 
 	@Override
 	public void plusUpOdr(String pno) {
-		int isPu = sql.update(namespace+".pluo");
+		int isPu = sql.update(namespace+".plo");
 		sql.commit();
 	}
 

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 
 
@@ -65,9 +66,9 @@
 					<!--/category-products-->
 
 
-					<div class="shipping text-center">
+					<div class="text-center" style="padding-bottom: 100px;">
 						<!--shipping-->
-						<img src="images/home/shipping.jpg" alt="" />
+						<img src="./views/common/main/Left_banner_stayhome_cate.jpg" alt="" style="width: 100%"/>
 					</div>
 					<!--/shipping-->
 
@@ -95,7 +96,7 @@
 									<div class="productinfo text-center">
 										<a href="./product?sv=info&pno=${pvo2.pno }" onclick="countUp(${pvo2.pno});"><img src="./upload/${pvo2.thumb }"
 											alt="error" /></a>
-										<h2>${pvo2.price }</h2>
+										<h2><fmt:formatNumber value="${pvo2.price}" pattern="#,###.## ₩"/></h2>
 										<p><a href="./product?sv=info&pno=${pvo2.pno }" onclick="countUp(${pvo2.pno});">${pvo2.pname }</a></p>
 										<a href="#" class="btn btn-default add-to-cart"><i
 											class="fa fa-shopping-cart"></i>Add to cart</a>

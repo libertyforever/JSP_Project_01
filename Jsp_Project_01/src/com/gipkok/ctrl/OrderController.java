@@ -78,7 +78,7 @@ public class OrderController extends HttpServlet {
 				logger.info(prdset.split(":")[0]);
 				logger.info(prdset.split(":")[1]);
 				
-				psv.countOrderUp(prdset.split(":")[0]);
+				psv.countUpOdr(prdset.split(":")[0]);
 				cvo.setpno(Integer.parseInt(prdset.split(":")[0]));
 				cvo.setcnt(Integer.parseInt(prdset.split(":")[1]));
 				ProductVO pvo = psv.getInfo(Integer.parseInt(prdset.split(":")[0]));

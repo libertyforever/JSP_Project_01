@@ -9,7 +9,9 @@
 	<!--slider-->
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-12"></div>
+			<div class="col-sm-12">
+			<img alt="" src="./views/common/main/Main_banner_ntitled_design-High-Quality.jpg">
+			</div>
 		</div>
 	</div>
 </section>
@@ -66,9 +68,9 @@
 					<!--/category-products-->
 
 
-					<div class="shipping text-center">
+					<div class="text-center">
 						<!--shipping-->
-						<img src="images/home/shipping.jpg" alt="" />
+						<img src="./views/common/main/Left_banner_stayhome.jpg" alt="" style="width:100%"/>
 					</div>
 					<!--/shipping-->
 
@@ -88,7 +90,7 @@
 									<div class="productinfo text-center">
 										<a href="./product?sv=info&pno=${pvo2.pno }" onclick="countUp(${pvo2.pno});"><img src="./upload/${pvo2.thumb}"
 											alt="error" /></a>
-										<h2><fmt:formatNumber value="${pvo2.price}" pattern="₩ #,###.##"/></h2>
+										<h2><fmt:formatNumber value="${pvo2.price}" pattern="#,###.## ₩"/></h2>
 										<p><a href="./product?sv=info&pno=${pvo2.pno }" onclick="countUp(${pvo2.pno});">${pvo2.pname }</a></p>
 										<a href="#" class="btn btn-default add-to-cart"><i
 											class="fa fa-shopping-cart"></i>Add to cart</a>
@@ -115,7 +117,7 @@
 									<div class="productinfo text-center">
 										<a href="./product?sv=info&pno=${pvo1.pno }" onclick="countUp(${pvo1.pno});"><img src="./upload/${pvo1.thumb }"
 											alt="./resources/images/product-details/similar1.jpg" /></a>
-										<h2><fmt:formatNumber value="${pvo1.price}" pattern="₩ #,###.##"/></h2>
+										<h2><fmt:formatNumber value="${pvo1.price}" pattern="#,###.## ₩"/></h2>
 										<p><a href="./product?sv=info&pno=${pvo1.pno }" onclick="countUp(${pvo1.pno});">${pvo1.pname }</a></p>
 										<a href="#" class="btn btn-default add-to-cart"><i
 											class="fa fa-shopping-cart"></i>Add to cart</a>
@@ -139,7 +141,7 @@
 										<div class="productinfo text-center">
 											<a href="./product?sv=info&pno=${pvo.pno }" onclick="countUp(${pvo.pno});"><img src="./upload/${pvo.thumb }"
 												alt="error" /></a>
-											<h2><fmt:formatNumber value="${pvo.price}" pattern="₩ #,###.##"/></h2>
+											<h2><fmt:formatNumber value="${pvo.price}" pattern="#,###.## ₩"/></h2>
 											<p><a href="./product?sv=info&pno=${pvo.pno }" onclick="countUp(${pvo.pno});">${pvo.pname }</a></p>
 											<a href="#" class="btn btn-default add-to-cart"><i
 												class="fa fa-shopping-cart"></i>Add to cart</a>

@@ -35,7 +35,7 @@
 	<update id="cntup" parameterType="java.lang.Integer">
 		update product set vcnt	= vcnt +1 where pno=#{pno}
 	</update>
-	<update id="cntup" parameterType="java.lang.Integer">
+	<update id="plo" parameterType="java.lang.Integer">
 		update product set ocnt	= ocnt +1 where pno=#{pno}
 	</update>
 	

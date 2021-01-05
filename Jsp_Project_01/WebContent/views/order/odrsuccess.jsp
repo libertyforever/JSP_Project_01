@@ -4,11 +4,11 @@
     <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <section id="cart_items">
 		<div class="container">
-			<div class="table-responsive cart_info">
 			<c:choose>
 					<c:when test="${ses_mvo.id ne '' && ses_mvo.id ne null }">
+			<div class="table-responsive cart_info">
 				<div class="signup-form"><!--sign up form-->
-						<h2>주문이 완료 되었습니다.</h2>
+						<h3>주문이 완료 되었습니다.</h3>
 						</div>
 					<table class="table table-condensed">
 						<thead>
@@ -39,6 +39,7 @@
 									</c:choose></td></tr>
 						</tbody>
 					</table>
+					</div>
 
 					<div class="cart-sum product-information pull-right" style="margin-bottom: 20px;'">
 				<form action="./order?sv=li" method="post">
@@ -51,11 +52,12 @@
 				
 				</c:when>
 				<c:otherwise>
-				<h2 >로그인부터 해주세요!</h2>
-				<a class="btn btn-warning" href="index.jsp?rp=login">login</a>
+				<div class="col-sm-12" style="text-align: center; padding-bottom:100px; ">
+					<h2>로그인부터 해주세요!</h2>
+					<a class="btn btn-warning" href="index.jsp?rp=login">login</a>
+					</div>
 				</c:otherwise>
 				</c:choose>
-			</div>
 			<%-- <div class="product__pagination">
 					<c:if test="${paging.prevBlock > 5 }">
 					<a href="./Cart?sv=list&cp=${paging.prevBlock }"><i class="fa fa-long-arrow-left"></i></a>

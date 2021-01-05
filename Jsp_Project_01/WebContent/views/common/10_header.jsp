@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Home | GipKok Mall</title>
+    <title>GipKok Mall | Welcome</title>
     <link href="resources/css/bootstrap.min.css" rel="stylesheet">
     <link href="resources/css/font-awesome.min.css" rel="stylesheet">
     <link href="resources/css/prettyPhoto.css" rel="stylesheet">
@@ -37,7 +37,7 @@
       <div class="header_top"><!--header_top-->
          <div class="container">
             <div class="row">
-               <div class="col-sm-6">
+               <div class="col-sm-5">
                   <div class="contactinfo">
                      <ul class="nav nav-pills">
                      <%-- 아이디 --%>
@@ -55,7 +55,10 @@
                      </ul>
                   </div>
                </div>
-               <div class="col-sm-6">
+               <div class="col-sm-2">
+               <a href="./index.jsp"><img alt="" src="./views/common/main/Top_mid_banner.png" style="height: 34px;"></a>
+               </div>
+               <div class="col-sm-5">
                   <div class="social-icons pull-right">
                      <ul class="nav navbar-nav">
                         <li><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
@@ -69,14 +72,17 @@
       <div class="header-middle"><!--header-middle-->
          <div class="container">
             <div class="row">
-               <div class="col-md-4 clearfix">
+               <div class="col-md-4 clearfix" style="padding-left: 0px; ">
+               <a href="./index.jsp"><img alt="main/Top_banner.jpg" src="./views/common/main/Top_banner2.jpg" style="height:50px;"></a>
                </div>
                <%-- 메뉴설정 --%>
                <div class="col-md-8 clearfix">
+                 	
                   <c:choose>
 					<c:when test="${ses_mvo.id ne '' && ses_mvo.id ne null }">
 						<div class="shop-menu clearfix pull-right">
 							<ul class="nav navbar-nav">
+							<li><img class="" alt="" src="./views/common/main/up2sixfree.png"> </li>
 							<c:choose>
 							 <c:when test="${ses_mvo.grade == 101 }">
 								<li><a href="./member?sv=list"><i class="fa fa-star"></i>mbr list</a></li>
@@ -89,16 +95,17 @@
 								<li><a href="./Cart?sv=list"><i class="fa fa-shopping-cart"></i> Cart</a></li>
 								<li><a href="ordera?sv=li&id=${ses_mvo.id }"><i class="fa fa-crosshairs"></i> Checkout</a></li>
 							    <li><a><i class="fa fa-star"></i>${ses_mvo.nickname }</a></li> 
-								<li><a href="index.jsp?rp=logout"><i class="fa fa-lock"></i> Logout</a></li>
+								<li><a href="index.jsp?rp=logout"><i class="fa fa-lock"></i> Logout </a></li>
 							</ul>
 						</div>
 						</c:when>
 						<c:otherwise>
 						<div class="shop-menu clearfix pull-right">
 							<ul class="nav navbar-nav">
+								<li><img class="" alt="" src="./views/common/main/up2sixfree.png"> </li>
 								<li><a href="index.jsp?rp=join"><i class="fa fa-user"></i> join</a></li>
 								<li><a href="./Cart?sv=list"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-								<li><a href="index.jsp?rp=login"><i class="fa fa-lock"></i> Login</a></li>
+								<li><a href="index.jsp?rp=login"><i class="fa fa-lock"></i> Login </a></li>
 							</ul>
 						</div>
 						</c:otherwise>

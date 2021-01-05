@@ -3,14 +3,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <section id="cart_items">
 	<div class="container">
-		<div class="table-responsive cart_info">
 
 			<c:choose>
 				<c:when test="${ses_mvo.id ne '' && ses_mvo.id ne null }">
-
+<h3> ${ses_mvo.id} 님의 장바구니</h3>
+		<div class="table-responsive cart_info">
 					<table class="table table-condensed">
 						<thead>
 							<tr class="cart_menu">
@@ -36,9 +37,10 @@
 										<td class=image>${cavo.pno}</td>
 										<td class="cart_quantity">${cavo.pname}</td>
 										<td class="image">${cavo.cnt}</td>
-										<td class=""><c:set var="sum_item"
-												value="${sum_item + cavo.cnt * cavo.price }"></c:set> 단품 :
-											${cavo.price} ₩<br>소계: ${cavo.cnt * cavo.price} ₩</td>
+										<c:set var="sum_item"
+												value="${sum_item + cavo.cnt * cavo.price }"></c:set>
+										<td class=""> 단품: <fmt:formatNumber value="${cavo.price}" pattern="#,###.## ₩"/>
+										<br>소계: <fmt:formatNumber value="${cavo.price * cavo.cnt}" pattern="#,###.## ₩"/></td>
 										<td><a href="./Cart?sv=rm&cano=${cavo.cano}"> 구매 </a> <a
 											href="./Cart?sv=rm&cano=${cavo.cano}"> 삭제 </a></td>
 										<td><input type="checkbox" name="${cavo.pno}"
@@ -51,11 +53,11 @@
 							</c:forEach>
 						</tbody>
 					</table>
-
+</div>
 					<div class="cart-sum product-information pull-right"
 						style="margin-bottom: 20px;'">
 
-						<span><span>Total : ${sum_item } ₩</span></span>
+						<span><span>Total : <fmt:formatNumber value="${sum_item }" pattern="#,###.## ₩"/></span></span>
 						<form action="./ordera?sv=odr" method="post">
 							<input type="hidden" name="id" value="${ses_mvo.id}"> <input
 								type="hidden" name="prdinfo" value="${json_prd1}">
@@ -71,8 +73,10 @@
 
 				</c:when>
 				<c:otherwise>
+				<div class="col-sm-12" style="text-align: center; padding-bottom:100px; ">
 					<h2>로그인부터 해주세요!</h2>
 					<a class="btn btn-warning" href="index.jsp?rp=login">login</a>
+					</div>
 				</c:otherwise>
 			</c:choose>
 		</div>
@@ -102,7 +106,7 @@
 
 
 
-	</div>
+	
 </section>
 <!--/#cart_items-->
 <script type="text/javascript">

@@ -868,14 +868,15 @@ h2.title {
 }
 
 .productinfo img {
-    width: 100%;
+    width: auto;
     height: auto;
+    max-width:250px;
+    max-height: 240px;
 }
 
 .productinfo {
     position: relative;
     height: 400px;
-    max-height:200px;
 }
 
 .product-overlay {

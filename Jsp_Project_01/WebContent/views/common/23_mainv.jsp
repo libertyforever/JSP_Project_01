@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 
 <section id="slider">
@@ -65,9 +65,9 @@
 					<!--/category-products-->
 
 
-					<div class="shipping text-center">
+					<div class="text-center" style="padding-bottom: 100px;">
 						<!--shipping-->
-						<img src="images/home/shipping.jpg" alt="" />
+						<img src="./views/common/main/Left_banner_stayhome_view.jpg" alt="" style="width: 100%"/>
 					</div>
 					<!--/shipping-->
 
@@ -88,7 +88,7 @@
 									<div class="productinfo text-center">
 										<a href="./product?sv=info&pno=${pvo2.pno }" onclick="countUp(${pvo2.pno});"><img src="./upload/${pvo2.thumb }"
 											alt="error" /></a>
-										<h2>${pvo2.price }</h2>
+										<h2><fmt:formatNumber value="${pvo2.price}" pattern="#,###.## ₩"/></h2>
 										<p><a href="./product?sv=info&pno=${pvo2.pno }" onclick="countUp(${pvo2.pno});">${pvo2.pname }</a></p>
 										<a href="#" class="btn btn-default add-to-cart"><i
 											class="fa fa-shopping-cart"></i>Add to cart</a>
@@ -101,27 +101,29 @@
 
 				</div>
 				<!--features_items-->
-				<div class="product__pagination">
+				<div class="pagination-area">
+					<ul class="pagination">
 					<c:if test="${paging.prevBlock > 5 }">
-					<a href="./product?sv=liv&cp=${paging.prevBlock }"><i class="fa fa-long-arrow-left"></i></a>
+					<li><a href="./product?sv=lip&cp=${paging.prevBlock }"><i class="fa fa-angle-double-left"></i></a></li>
 					</c:if>
 					<c:forEach var="i" begin="${paging.prevBlock + 1 }" 
 					end="${paging.totalPage }" varStatus="status">
 					<c:if test="${status.count < 6 }">
 					<c:choose>
 						<c:when test="${i eq paging.clPage }">
-							<a href="#">${i }</a>
+							<li><a href="#" class="active">${i }</a></li>
 						</c:when>						
 						<c:otherwise>
-							<a href="./product?sv=liv&cp=${i }">${i }</a>
+							<li><a href="./product?sv=lip&cp=${i }">${i }</a></li>
 						</c:otherwise>
 					</c:choose>					
 					</c:if>
 					</c:forEach>
 					<c:if test="${paging.nextBlock < paging.totalPage }">
-					<a href="./product?sv=liv&cp=${paging.nextBlock }">
-					<i class="fa fa-long-arrow-right"></i></a>
+					<li><a href="./product?sv=lip&cp=${paging.nextBlock }">
+					<i class="fa fa-long-arrow-right"></i></a></li>
 					</c:if>
+					</ul>
 				</div>
 				
 				</div>
